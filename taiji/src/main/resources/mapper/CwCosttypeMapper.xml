@@ -1,24 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wupai.taiji.model.mapper.CwCosttypeMapper">
+  <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.CwCosttype">
+    <id column="costtype_id" jdbcType="INTEGER" property="costtypeId" />
+    <result column="costtype_name" jdbcType="VARCHAR" property="costtypeName" />
+    <result column="addname" jdbcType="VARCHAR" property="addname" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="updatename" jdbcType="VARCHAR" property="updatename" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="deletename" jdbcType="VARCHAR" property="deletename" />
+    <result column="deletetime" jdbcType="TIMESTAMP" property="deletetime" />
+    <result column="TimeLiness" jdbcType="INTEGER" property="timeliness" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    costtype_id, costtype_name, addname, addtime, updatename, updatetime, deletename, 
+    deletetime, TimeLiness
+  </sql>
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from cw_costtype-->
+<!--    where costtype_id = #{costtypeId,jdbcType=INTEGER}-->
+<!--  </select>-->
 
-    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.CwCosttype">
-            <id property="costtypeId" column="costtype_id" jdbcType="INTEGER"/>
-            <result property="costtypeName" column="costtype_name" jdbcType="VARCHAR"/>
-            <result property="addname" column="addname" jdbcType="VARCHAR"/>
-            <result property="addtime" column="addtime" jdbcType="TIMESTAMP"/>
-            <result property="updatename" column="updatename" jdbcType="VARCHAR"/>
-            <result property="updatetime" column="updatetime" jdbcType="TIMESTAMP"/>
-            <result property="deletename" column="deletename" jdbcType="VARCHAR"/>
-            <result property="deletetime" column="deletetime" jdbcType="TIMESTAMP"/>
-            <result property="timeliness" column="TimeLiness" jdbcType="INTEGER"/>
-    </resultMap>
+  <!-- 查询所有费用类型 -->
+<!--  <select id="selectAllCwCosttype" resultMap="BaseResultMap">-->
+<!--    select <include refid="Base_Column_List"/>-->
+<!--    from cw_costtype-->
+<!--    where timeliness=0-->
+<!--  </select>-->
 
-    <sql id="Base_Column_List">
-        costtype_id,costtype_name,addname,
-        addtime,updatename,updatetime,
-        deletename,deletetime,TimeLiness
-    </sql>
+  <select id="selectAllCwCosttype" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from cw_costtype
+    <where>
+      <if test="value=='费用类型' and input!=null">
+        costtype_name like CONCAT(CONCAT('%',#{input},'%'))
+      </if>
+    </where>
+  </select>
+
+  <!-- 新增费用类型 -->
+  <insert id="addCwCosttype" keyColumn="costtype_id" keyProperty="costtypeId" parameterType="com.wupai.taiji.model.entity.CwCosttype" useGeneratedKeys="true">
+    insert into cw_costtype (costtype_name, addname, addtime)
+    values (#{costtypeName,jdbcType=VARCHAR}, #{addname,jdbcType=VARCHAR}, #{addtime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <!-- 删除费用类型 -->
+  <update id="delCwCosttype" parameterType="com.wupai.taiji.model.entity.CwCosttype">
+    update cw_costtype
+    set TimeLiness = 1
+    where costtype_id = #{costtypeId,jdbcType=INTEGER}
+  </update>
+
+  <!-- 修改费用类型 -->
+  <update id="updateCwCosttype" parameterType="com.wupai.taiji.model.entity.CwCosttype">
+    update cw_costtype
+    set costtype_name = #{costtypeName,jdbcType=VARCHAR}
+      updatename = #{updatename,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where costtype_id = #{costtypeId,jdbcType=INTEGER}
+  </update>
 </mapper>
