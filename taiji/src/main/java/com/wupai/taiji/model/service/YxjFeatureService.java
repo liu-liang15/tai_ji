@@ -4,6 +4,6 @@ package com.wupai.taiji.model.service;
 /**
  *
  */
-public class YxjFeatureService {
+public class YxjFeatureService  {
 
 }

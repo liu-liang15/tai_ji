@@ -93,9 +93,9 @@ public class YxjHousing implements Serializable {
     private String totalCeng;
 
     /**
-     * 朝向
+     * 朝向id(外键)
      */
-    private String houseOrientation;
+    private Integer orientationId;
 
     /**
      * 平方（共多少平方）
@@ -103,9 +103,9 @@ public class YxjHousing implements Serializable {
     private String houseMeters;
 
     /**
-     * 装修情况
+     * 装修类型id(外键)
      */
-    private String fitment;
+    private Integer fitmentId;
 
     /**
      * 可租日期（房屋可租日期）
@@ -128,9 +128,9 @@ public class YxjHousing implements Serializable {
     private String housePaymentMethod;
 
     /**
-     * 房屋特色
+     * 房屋特色id(外键)
      */
-    private String houseCharacter;
+    private Integer featureId;
 
     /**
      * 房源描述
@@ -146,6 +146,11 @@ public class YxjHousing implements Serializable {
      * 合租整租状态
      */
     private Integer jointRent;
+
+    /**
+     * 房屋性质id(外键)
+     */
+    private Integer natureId;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

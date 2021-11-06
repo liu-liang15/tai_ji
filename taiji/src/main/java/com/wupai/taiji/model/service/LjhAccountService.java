@@ -4,6 +4,6 @@ package com.wupai.taiji.model.service;
 /**
  *
  */
-public class LjhAccountService  {
+public class LjhAccountService {
 
 }

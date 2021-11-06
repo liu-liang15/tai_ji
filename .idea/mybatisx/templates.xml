@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TemplatesSettings">
+    <option name="templateConfigs">
+      <TemplateContext>
+        <option name="generateConfig">
+          <GenerateConfig>
+            <option name="annotationType" value="MYBATIS_PLUS3" />
+            <option name="basePackage" value="com.wupai.taiji.model" />
+            <option name="basePath" value="src/main/java" />
+            <option name="encoding" value="UTF-8" />
+            <option name="extraClassSuffix" value="" />
+            <option name="ignoreFieldPrefix" value="" />
+            <option name="ignoreFieldSuffix" value="" />
+            <option name="ignoreTablePrefix" value="" />
+            <option name="ignoreTableSuffix" value="" />
+            <option name="moduleName" value="taiji" />
+            <option name="modulePath" value="$PROJECT_DIR$/taiji" />
+            <option name="moduleUIInfoList">
+              <list>
+                <ModuleUIInfo>
+                  <option name="basePath" value="${domain.basePath}" />
+                  <option name="configName" value="mapperInterface" />
+                  <option name="encoding" value="${domain.encoding}" />
+                  <option name="fileName" value="${domain.fileName}Mapper" />
+                  <option name="fileNameWithSuffix" value="${domain.fileName}Mapper.java" />
+                  <option name="modulePath" value="" />
+                  <option name="packageName" value="${domain.basePackage}.mapper" />
+                </ModuleUIInfo>
+                <ModuleUIInfo>
+                  <option name="basePath" value="src/main/resources" />
+                  <option name="configName" value="mapperXml" />
+                  <option name="encoding" value="${domain.encoding}" />
+                  <option name="fileName" value="${domain.fileName}Mapper" />
+                  <option name="fileNameWithSuffix" value="${domain.fileName}Mapper.xml" />
+                  <option name="modulePath" value="" />
+                  <option name="packageName" value="mapper" />
+                </ModuleUIInfo>
+                <ModuleUIInfo>
+                  <option name="basePath" value="${domain.basePath}" />
+                  <option name="configName" value="serviceInterface" />
+                  <option name="encoding" value="${domain.encoding}" />
+                  <option name="fileName" value="${domain.fileName}Service" />
+                  <option name="fileNameWithSuffix" value="${domain.fileName}Service.java" />
+                  <option name="modulePath" value="" />
+                  <option name="packageName" value="${domain.basePackage}.service" />
+                </ModuleUIInfo>
+              </list>
+            </option>
+            <option name="needsComment" value="true" />
+            <option name="relativePackage" value="" />
+            <option name="superClass" value="" />
+            <option name="tableUIInfoList">
+              <list>
+                <TableUIInfo>
+                  <option name="className" value="CwAccount" />
+                  <option name="tableName" value="cw_account" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="CwCosttype" />
+                  <option name="tableName" value="cw_costtype" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="FgFeature" />
+                  <option name="tableName" value="fg_feature" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="CwFinance" />
+                  <option name="tableName" value="cw_finance" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="FgFitment" />
+                  <option name="tableName" value="fg_fitment" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="FgNature" />
+                  <option name="tableName" value="fg_nature" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="FgOrientation" />
+                  <option name="tableName" value="fg_orientation" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="FgRoomType" />
+                  <option name="tableName" value="fg_room_type" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="FyHousing" />
+                  <option name="tableName" value="fy_housing" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="FyRoom" />
+                  <option name="tableName" value="fy_room" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="HtGangWei" />
+                  <option name="tableName" value="ht_gang_wei" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="HtHeTong" />
+                  <option name="tableName" value="ht_he_tong" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="HtHuiFang" />
+                  <option name="tableName" value="ht_hui_fang" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="HtRuZhur" />
+                  <option name="tableName" value="ht_ru_zhur" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="HtYuanGo" />
+                  <option name="tableName" value="ht_yuan_go" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="KyCustominfo" />
+                  <option name="tableName" value="ky_custominfo" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="KyPre" />
+                  <option name="tableName" value="ky_pre" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="KySurepre" />
+                  <option name="tableName" value="ky_surepre" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="KyTypez" />
+                  <option name="tableName" value="ky_typez" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="KyUneed" />
+                  <option name="tableName" value="ky_uneed" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ZhBaojie" />
+                  <option name="tableName" value="zh_baojie" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ZhGongren" />
+                  <option name="tableName" value="zh_gongren" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ZhPaidan" />
+                  <option name="tableName" value="zh_paidan" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ZhWeixiu" />
+                  <option name="tableName" value="zh_weixiu" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="ZhWxlx" />
+                  <option name="tableName" value="zh_wxlx" />
+                </TableUIInfo>
+              </list>
+            </option>
+            <option name="templatesName" value="mybatis-plus3" />
+            <option name="useLombokPlugin" value="true" />
+          </GenerateConfig>
+        </option>
+        <option name="moduleName" value="taiji" />
+        <option name="projectPath" value="$PROJECT_DIR$" />
+        <option name="templateName" value="mybatis-plus3" />
+      </TemplateContext>
+    </option>
+  </component>
+</project>
