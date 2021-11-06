@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YxjOrientationMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YxjOrientation">
+            <id property="orientationId" column="orientation_id" jdbcType="INTEGER"/>
+            <result property="orientationName" column="orientation_name" jdbcType="VARCHAR"/>
+            <result property="orientationNum" column="orientation_num" jdbcType="INTEGER"/>
+            <result property="orientationRemarke" column="orientation_remarke" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        orientation_id,orientation_name,orientation_num,
+        orientation_remarke
+    </sql>
+</mapper>

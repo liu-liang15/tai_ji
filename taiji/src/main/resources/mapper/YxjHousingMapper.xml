@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YxjHousingMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YxjHousing">
+            <id property="houseId" column="house_id" jdbcType="INTEGER"/>
+            <result property="city" column="city" jdbcType="VARCHAR"/>
+            <result property="plotName" column="plot_name" jdbcType="VARCHAR"/>
+            <result property="area" column="area" jdbcType="VARCHAR"/>
+            <result property="houseNumber" column="house_number" jdbcType="VARCHAR"/>
+            <result property="buildingNo" column="building_no" jdbcType="VARCHAR"/>
+            <result property="unit" column="unit" jdbcType="VARCHAR"/>
+            <result property="house" column="house" jdbcType="VARCHAR"/>
+            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="roomNum" column="room_num" jdbcType="VARCHAR"/>
+            <result property="hall" column="hall" jdbcType="VARCHAR"/>
+            <result property="defend" column="defend" jdbcType="VARCHAR"/>
+            <result property="kitchen" column="kitchen" jdbcType="VARCHAR"/>
+            <result property="inLayers" column="In_layers" jdbcType="VARCHAR"/>
+            <result property="totalCeng" column="total_ceng" jdbcType="VARCHAR"/>
+            <result property="houseOrientation" column="house_orientation" jdbcType="VARCHAR"/>
+            <result property="houseMeters" column="house_meters" jdbcType="VARCHAR"/>
+            <result property="fitment" column="fitment" jdbcType="VARCHAR"/>
+            <result property="houserRentDate" column="houser_rent_date" jdbcType="TIMESTAMP"/>
+            <result property="rentalPrices" column="rental_prices" jdbcType="DECIMAL"/>
+            <result property="houseFloorPrice" column="house_floor_price" jdbcType="DECIMAL"/>
+            <result property="housePaymentMethod" column="house_payment_method" jdbcType="VARCHAR"/>
+            <result property="houseCharacter" column="house_character" jdbcType="VARCHAR"/>
+            <result property="houseProperty" column="house_property" jdbcType="VARCHAR"/>
+            <result property="homeState" column="home_state" jdbcType="INTEGER"/>
+            <result property="jointRent" column="joint_rent" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        house_id,city,plot_name,
+        area,house_number,building_no,
+        unit,house,user_id,
+        room_num,hall,defend,
+        kitchen,In_layers,total_ceng,
+        house_orientation,house_meters,fitment,
+        houser_rent_date,rental_prices,house_floor_price,
+        house_payment_method,house_character,house_property,
+        home_state,joint_rent
+    </sql>
+</mapper>

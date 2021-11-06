@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YsCustominfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YsCustominfo">
+            <id property="cid" column="cid" jdbcType="INTEGER"/>
+            <result property="cname" column="cname" jdbcType="VARCHAR"/>
+            <result property="ctel" column="ctel" jdbcType="VARCHAR"/>
+            <result property="cardnum" column="cardnum" jdbcType="VARCHAR"/>
+            <result property="csex" column="csex" jdbcType="BOOLEAN"/>
+            <result property="cTypeid" column="c_typeid" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        cid,cname,ctel,
+        cardnum,csex,c_typeid
+    </sql>
+</mapper>

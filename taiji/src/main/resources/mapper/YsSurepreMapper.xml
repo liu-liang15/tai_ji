@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YsSurepreMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YsSurepre">
+            <id property="suid" column="suid" jdbcType="INTEGER"/>
+            <result property="sutime" column="sutime" jdbcType="TIMESTAMP"/>
+            <result property="suntime" column="suntime" jdbcType="TIMESTAMP"/>
+            <result property="accountId" column="account_id" jdbcType="INTEGER"/>
+            <result property="empid" column="empid" jdbcType="INTEGER"/>
+            <result property="sTid" column="s_tid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        suid,sutime,suntime,
+        account_id,empid,s_tid
+    </sql>
+</mapper>

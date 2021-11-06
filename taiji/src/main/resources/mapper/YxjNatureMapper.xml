@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YxjNatureMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YxjNature">
+            <id property="natureId" column="nature_id" jdbcType="INTEGER"/>
+            <result property="natureName" column=" nature_name" jdbcType="VARCHAR"/>
+            <result property="natureNum" column="nature_num" jdbcType="INTEGER"/>
+            <result property="natureRemark" column="nature_remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        nature_id, nature_name,nature_num,
+        nature_remark
+    </sql>
+</mapper>

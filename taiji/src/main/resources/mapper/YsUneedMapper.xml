@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YsUneedMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YsUneed">
+            <id property="uid" column="uid" jdbcType="INTEGER"/>
+            <result property="uCid" column="u_cid" jdbcType="INTEGER"/>
+            <result property="uNeedTid" column="u_need_tid" jdbcType="INTEGER"/>
+            <result property="uIntime" column="u_intime" jdbcType="TIMESTAMP"/>
+            <result property="uTenancyTid" column="u_tenancy_tid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,u_cid,u_need_tid,
+        u_intime,u_tenancy_tid
+    </sql>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YxjRoomTypeMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YxjRoomType">
+            <id property="typeId" column="type_id" jdbcType="INTEGER"/>
+            <result property="typeName" column="type_name" jdbcType="VARCHAR"/>
+            <result property="typeNum" column="type_num" jdbcType="INTEGER"/>
+            <result property="typeRemark" column="type_remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        type_id,type_name,type_num,
+        type_remark
+    </sql>
+</mapper>

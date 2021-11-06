@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.LlYuanGoMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.LlYuanGo">
+            <id property="untitled" column="untitled" jdbcType="INTEGER"/>
+            <result property="ygName" column="yg_name" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="gwId" column="gw_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        untitled,yg_name,password,
+        gw_id
+    </sql>
+</mapper>

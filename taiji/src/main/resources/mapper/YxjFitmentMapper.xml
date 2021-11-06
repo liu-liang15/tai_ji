@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.YxjFitmentMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.YxjFitment">
+            <id property="fitmentId" column="fitment_id" jdbcType="INTEGER"/>
+            <result property="fitmentName" column="fitment_name" jdbcType="VARCHAR"/>
+            <result property="fitmentNum" column="fitment_num" jdbcType="INTEGER"/>
+            <result property="fitmentRemark" column="fitment_remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        fitment_id,fitment_name,fitment_num,
+        fitment_remark
+    </sql>
+</mapper>
