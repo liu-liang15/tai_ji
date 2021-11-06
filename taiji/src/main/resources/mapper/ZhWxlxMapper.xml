@@ -12,4 +12,6 @@
     <sql id="Base_Column_List">
         lx_id,lx_name
     </sql>
+
+
 </mapper>
