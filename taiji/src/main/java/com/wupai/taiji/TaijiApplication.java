@@ -10,7 +10,6 @@ import java.rmi.ServerError;
 public class TaijiApplication {
 
     public static void main(String[] args) {
-        System.err.println("ads");
         SpringApplication.run(TaijiApplication.class, args);
     }
 

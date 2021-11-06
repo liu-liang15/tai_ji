@@ -1,4 +1,4 @@
-package com.wupai.taiji.model.controller.CwCosttype;
+package com.wupai.taiji.controller.CwCosttype;
 
 import com.github.pagehelper.PageInfo;
 import com.wupai.taiji.model.entity.CwCosttype;
