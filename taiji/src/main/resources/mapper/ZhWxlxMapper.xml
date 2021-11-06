@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.ZhWxlxMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.ZhWxlx">
+            <id property="lxId" column="lx_id" jdbcType="INTEGER"/>
+            <result property="lxName" column="lx_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        lx_id,lx_name
+    </sql>
+</mapper>

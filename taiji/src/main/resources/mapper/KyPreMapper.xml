@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.KyPreMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.KyPre">
+            <id property="pid" column="pid" jdbcType="INTEGER"/>
+            <result property="pCid" column="p_cid" jdbcType="INTEGER"/>
+            <result property="pHid" column="p_hid" jdbcType="INTEGER"/>
+            <result property="pTid" column="p_tid" jdbcType="INTEGER"/>
+            <result property="pStatuTid" column="p_statu_tid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        pid,p_cid,p_hid,
+        p_tid,p_statu_tid
+    </sql>
+</mapper>

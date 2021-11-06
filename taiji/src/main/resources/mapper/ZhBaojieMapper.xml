@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.ZhBaojieMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.ZhBaojie">
+            <id property="bjId" column="bj_id" jdbcType="INTEGER"/>
+            <result property="bjTime" column="bj_time" jdbcType="VARCHAR"/>
+            <result property="bjPhone" column="bj_phone" jdbcType="VARCHAR"/>
+            <result property="bjReason" column="bj_reason" jdbcType="VARCHAR"/>
+            <result property="fyId" column="fy_id" jdbcType="VARCHAR"/>
+            <result property="ztId" column="zt_id" jdbcType="VARCHAR"/>
+            <result property="wxName" column="wx_name" jdbcType="VARCHAR"/>
+            <result property="bjLaiyuan" column="bj_laiyuan" jdbcType="VARCHAR"/>
+            <result property="pdId" column="pd_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        bj_id,bj_time,bj_phone,
+        bj_reason,fy_id,zt_id,
+        wx_name,bj_laiyuan,pd_id
+    </sql>
+</mapper>

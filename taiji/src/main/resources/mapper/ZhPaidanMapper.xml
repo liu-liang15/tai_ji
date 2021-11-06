@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.ZhPaidanMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.ZhPaidan">
+            <id property="pdId" column="pd_id" jdbcType="INTEGER"/>
+            <result property="pdFeiyong" column="pd_feiyong" jdbcType="DECIMAL"/>
+            <result property="pdTime" column="pd_time" jdbcType="TIMESTAMP"/>
+            <result property="paNaid" column="pa_naid" jdbcType="VARCHAR"/>
+            <result property="pdCdf" column="pd_cdf" jdbcType="VARCHAR"/>
+            <result property="pdBeizhu" column="pd_beizhu" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        pd_id,pd_feiyong,pd_time,
+        pa_naid,pd_cdf,pd_beizhu
+    </sql>
+</mapper>

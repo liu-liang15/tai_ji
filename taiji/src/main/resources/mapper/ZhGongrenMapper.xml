@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.ZhGongrenMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.ZhGongren">
+            <id property="grId" column="gr_id" jdbcType="INTEGER"/>
+            <result property="grName" column="gr_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        gr_id,gr_name
+    </sql>
+</mapper>

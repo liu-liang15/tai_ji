@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.FyRoomMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.FyRoom">
+            <id property="roomId" column="room_id" jdbcType="INTEGER"/>
+            <result property="roomName" column="room_name" jdbcType="VARCHAR"/>
+            <result property="orientationId" column="orientation_id" jdbcType="INTEGER"/>
+            <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+            <result property="roomSquareMeters" column="room_square_meters" jdbcType="VARCHAR"/>
+            <result property="roomPrices" column="room_prices" jdbcType="DECIMAL"/>
+            <result property="roomFloorPrice" column="room_floor_price" jdbcType="DECIMAL"/>
+            <result property="roomPaymentMethod" column="room_payment_method" jdbcType="VARCHAR"/>
+            <result property="rentTime" column="rent_time" jdbcType="TIMESTAMP"/>
+            <result property="contractTime" column="contract_time" jdbcType="TIMESTAMP"/>
+            <result property="featureId" column="feature_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        room_id,room_name,orientation_id,
+        type_id,room_square_meters,room_prices,
+        room_floor_price,room_payment_method,rent_time,
+        contract_time,feature_id
+    </sql>
+</mapper>

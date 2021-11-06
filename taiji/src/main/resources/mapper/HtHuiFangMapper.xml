@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.HtHuiFangMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.HtHuiFang">
+            <id property="hfid" column="hfid" jdbcType="INTEGER"/>
+            <result property="hfjl" column="hfjl" jdbcType="VARCHAR"/>
+            <result property="hfr" column="hfr" jdbcType="VARCHAR"/>
+            <result property="htId" column="ht_id" jdbcType="VARCHAR"/>
+            <result property="hfSj" column="hf_sj" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        hfid,hfjl,hfr,
+        ht_id,hf_sj
+    </sql>
+</mapper>
