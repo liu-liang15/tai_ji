@@ -1,8 +1,9 @@
-package com.wupai.taiji.controller.CwCosttype;
+package com.wupai.taiji.controller.cwcosttype;
 
 import com.github.pagehelper.PageInfo;
 import com.wupai.taiji.model.entity.CwCosttype;
 import com.wupai.taiji.model.service.CwCosttypeService;
+import com.wupai.taiji.util.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,28 +17,37 @@ public class CwCosttypeController {
 
     //分页显示所有费用类型
     @GetMapping("/selectAllCwCosttype")
-    public PageInfo<CwCosttype> findRuyuanPage(@RequestParam("currentPage") int currentPage, @RequestParam("pagesize") int pagesize){
+    public PageInfo<CwCosttype> selectAllCwCosttype(@RequestParam("currentPage") int currentPage, @RequestParam("pagesize") int pagesize){
         return cwCosttypeService.selectAllCwCosttype(currentPage,pagesize);
     }
 
     //新增费用类型
     @PostMapping("/addCwCosttype")
-    public CwCosttype addCwCosttype(@RequestBody CwCosttype cwCosttype){
-        cwCosttypeService.addCwCosttype(cwCosttype);
-        return cwCosttype;
+    public CommonResult addCwCosttype(@RequestBody CwCosttype cwCosttype){
+        CwCosttype cw = cwCosttypeService.addCwCosttype(cwCosttype);
+        if (cw==null)
+            return new CommonResult(200,"账号或密码错误！");
+        else
+            return new CommonResult(200,"查询成功",cw);
     }
 
     //修改费用类型
     @PutMapping("/updateCwCosttype")
-    public CwCosttype updateCwCosttype(@RequestBody CwCosttype cwCosttype){
-        cwCosttypeService.updateCwCosttype(cwCosttype);
-        return cwCosttype;
+    public CommonResult updateCwCosttype(@RequestBody CwCosttype cwCosttype){
+        CwCosttype cw = cwCosttypeService.updateCwCosttype(cwCosttype);
+        if (cw==null)
+            return new CommonResult(200,"账号或密码错误！");
+        else
+            return new CommonResult(200,"查询成功",cw);
     }
 
     //删除费用类型
     @PutMapping("/delCwCosttype")
-    public CwCosttype delCwCosttype(@RequestBody CwCosttype cwCosttype){
-        cwCosttypeService.delCwCosttype(cwCosttype);
-        return cwCosttype;
+    public CommonResult delCwCosttype(@RequestBody CwCosttype cwCosttype){
+        CwCosttype cw = cwCosttypeService.delCwCosttype(cwCosttype);
+        if (cw==null)
+            return new CommonResult(200,"账号或密码错误！");
+        else
+            return new CommonResult(200,"查询成功",cw);
     }
 }
