@@ -20,14 +20,18 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        zj_id,ht_id,fw_id,
+       zj_id,ht_id,fw_id,
         czr,htks_sj,htdq_sj,
         zhu_jing,ya_jing,tqfk,
-        zhuang_tai,cjr,untitled
+        zhuang_tai,cjr,untitled,
+		city,house_payment_method,
+		name,phone,sfz
     </sql>
+
 <!--    查询合同和房屋信息   -->
-    <select id="allHeTong" resultMap="BaseResultMap">
-
-
+    <select id="allHeTong" resultType="java.util.Map">
+        select <include refid="Base_Column_List"/> from
+                ht_he_tong ht left join fy_housing fy on ht.fw_id = fy.house_id
+                left join ht_ru_zhur rz on ht.czr = rz.rz_id
     </select>
 </mapper>
