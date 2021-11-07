@@ -7,12 +7,6 @@
     <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.FyHousing">
             <id property="houseId" column="house_id" jdbcType="INTEGER"/>
             <result property="city" column="city" jdbcType="VARCHAR"/>
-            <result property="plotName" column="plot_name" jdbcType="VARCHAR"/>
-            <result property="area" column="area" jdbcType="VARCHAR"/>
-            <result property="houseNumber" column="house_number" jdbcType="VARCHAR"/>
-            <result property="buildingNo" column="building_no" jdbcType="VARCHAR"/>
-            <result property="unit" column="unit" jdbcType="VARCHAR"/>
-            <result property="house" column="house" jdbcType="VARCHAR"/>
             <result property="userId" column="user_id" jdbcType="VARCHAR"/>
             <result property="roomNum" column="room_num" jdbcType="VARCHAR"/>
             <result property="hall" column="hall" jdbcType="VARCHAR"/>
@@ -35,9 +29,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        house_id,city,plot_name,
-        area,house_number,building_no,
-        unit,house,user_id,
+        house_id,city,user_id,
         room_num,hall,defend,
         kitchen,In_layers,total_ceng,
         orientation_id,house_meters,fitment_id,
