@@ -23,6 +23,7 @@ public class ZhWxlxService {
      * @return
      */
     public List<ZhWxlx> selectzhwelx(){
+
         return zhWxlxMapper.selectList(null);
     }
 
