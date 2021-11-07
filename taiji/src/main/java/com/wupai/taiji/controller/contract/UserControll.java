@@ -15,6 +15,11 @@ public class UserControll {
     @Resource
     HtYuanGoService htYuanGoService;
 
+    /**
+     * 登录验证
+     * @param yuanGo 员工
+     * @return  员工对象
+     */
     @PostMapping("getUser")
     public CommonResult getUser(@RequestBody HtYuanGo yuanGo){
         HtYuanGo user = htYuanGoService.getUser(yuanGo);
@@ -23,4 +28,5 @@ public class UserControll {
         else
             return new CommonResult(200,"查询成功",user);
     }
+
 }
