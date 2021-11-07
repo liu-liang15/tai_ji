@@ -14,6 +14,11 @@ import lombok.Data;
 @TableName(value ="ht_yuan_go")
 @Data
 public class HtYuanGo implements Serializable {
+
+    /**
+     * 客户预定跟进人员
+     */
+    private KySurepre kySurepreYg;
     /**
      * 员工ID
      */

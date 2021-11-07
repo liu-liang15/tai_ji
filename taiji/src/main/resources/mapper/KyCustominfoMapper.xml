@@ -10,11 +10,15 @@
             <result property="ctel" column="ctel" jdbcType="VARCHAR"/>
             <result property="cardnum" column="cardnum" jdbcType="VARCHAR"/>
             <result property="csex" column="csex" jdbcType="BOOLEAN"/>
-            <result property="cTypeid" column="c_typeid" jdbcType="VARCHAR"/>
-    </resultMap>
+     </resultMap>
 
     <sql id="Base_Column_List">
         cid,cname,ctel,
         cardnum,csex,c_typeid
     </sql>
+
+    <!--新增客户信息-->
+    <insert id="addCustomInfo">
+        insert into ky_custominfo ()
+    </insert>
 </mapper>

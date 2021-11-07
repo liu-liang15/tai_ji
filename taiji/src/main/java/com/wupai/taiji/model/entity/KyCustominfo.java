@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -14,6 +16,27 @@ import lombok.Data;
 @TableName(value ="ky_custominfo")
 @Data
 public class KyCustominfo implements Serializable {
+    /**
+     * 客户信息客户需求一对多
+     */
+    private List<KyUneed> kyUneeds;
+    /**
+     * 客户信息客户预约
+     */
+    private  List<KyPre> kyPres;
+    /**
+     * 客户信息客户预定
+     */
+    private  List<KySurepre> kySurepres;
+
+    /**
+     * 客户信息客户来源
+     */
+    private KyTypez cTypeid;
+
+    public KyCustominfo() {
+    }
+
     /**
      * 编号
      */
@@ -38,13 +61,9 @@ public class KyCustominfo implements Serializable {
     /**
      * 性别（0女1男）
      */
-    private Boolean csex;
+    private Integer csex;
 
-    /**
-     * 来源类型编号
-     */
-    private String cTypeid;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
+
 }

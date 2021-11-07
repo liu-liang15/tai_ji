@@ -15,6 +15,7 @@ public class UserControll {
     @Resource
     HtYuanGoService htYuanGoService;
 
+
     @PostMapping("getUser")
     public CommonResult getUser(@RequestBody HtYuanGo yuanGo){
         HtYuanGo user = htYuanGoService.getUser(yuanGo);
