@@ -1,6 +1,7 @@
 package com.wupai.taiji.model.service;
 
 
+<<<<<<< HEAD
 import com.wupai.taiji.model.entity.ZhZhuantai;
 import com.wupai.taiji.model.mapper.ZhZhuantaiMapper;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,11 @@ public class ZhZhuantaiService  {
     public List<ZhZhuantai> selectzhuantai(){
         return zhZhuantaiMapper.selectList(null);
     }
+=======
+/**
+ *
+ */
+public class ZhZhuantaiService  {
+
+>>>>>>> 16417cb07cbce1868cd044e5f13425a73bf85825
 }
