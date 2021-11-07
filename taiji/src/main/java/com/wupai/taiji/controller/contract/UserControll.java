@@ -15,13 +15,18 @@ public class UserControll {
     @Resource
     HtYuanGoService htYuanGoService;
 
-
+    /**
+     * 登录验证
+     * @param yuanGo 员工
+     * @return  员工对象
+     */
     @PostMapping("getUser")
     public CommonResult getUser(@RequestBody HtYuanGo yuanGo){
         HtYuanGo user = htYuanGoService.getUser(yuanGo);
         if (user==null)
-            return new CommonResult(200,"账号或密码错误！");
+            return new CommonResult(201,"账号或密码错误！");
         else
             return new CommonResult(200,"查询成功",user);
     }
+
 }

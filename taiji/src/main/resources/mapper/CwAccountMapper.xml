@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupai.taiji.model.mapper.CwAccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.CwAccount">
+            <id property="accountId" column="account_id" jdbcType="INTEGER"/>
+            <result property="accountName" column="account_name" jdbcType="VARCHAR"/>
+            <result property="number" column="number" jdbcType="VARCHAR"/>
+            <result property="cardholderName" column="cardholder_name" jdbcType="VARCHAR"/>
+            <result property="bank" column="bank" jdbcType="VARCHAR"/>
+            <result property="bankName" column="bank_name" jdbcType="VARCHAR"/>
+            <result property="merchant" column="merchant" jdbcType="VARCHAR"/>
+            <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+            <result property="accountState" column="account_state" jdbcType="INTEGER"/>
+            <result property="addname" column="addname" jdbcType="VARCHAR"/>
+            <result property="addtime" column="addtime" jdbcType="TIMESTAMP"/>
+            <result property="updatename" column="updatename" jdbcType="VARCHAR"/>
+            <result property="updatetime" column="updatetime" jdbcType="TIMESTAMP"/>
+            <result property="deletename" column="deletename" jdbcType="VARCHAR"/>
+            <result property="deletetime" column="deletetime" jdbcType="VARCHAR"/>
+            <result property="timeliness" column="TimeLiness" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        account_id, account_name, `number`, cardholder_name, bank,bank_name, merchant, remarks, account_state,
+        addname, addtime, updatename, updatetime, deletename, deletetime, TimeLiness
+    </sql>
+
+      <!-- 分页查询所有企业账户+条件查询 -->
+      <select id="selectAllCwAccount" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from cw_account
+        <where>
+          <if test="value=='账户名称' and input!=null">
+            account_name like CONCAT(CONCAT('%',#{input},'%'))
+          </if>
+          <if test="value=='持卡人姓名' and input!=null">
+              cardholder_name like CONCAT(CONCAT('%',#{input},'%'))
+          </if>
+        </where>
+      </select>
+
+    <!-- 新增企业账户 -->
+    <insert id="addCwAccount" keyColumn="account_id" keyProperty="accountId" parameterType="com.wupai.taiji.model.entity.CwAccount" useGeneratedKeys="true">
+        insert into cw_account (account_name, `number`,cardholder_name ,bank ,bank_name, merchant, remarks)
+        values (#{accountName,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{cardholderName,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR},
+        #{bankName,jdbcType=VARCHAR}, #{merchant,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR} )
+  </insert>
+
+    <!-- 删除企业账户 -->
+    <update id="delCwAccount" parameterType="com.wupai.taiji.model.entity.CwAccount">
+        update cw_account
+        set TimeLiness = 1
+        where account_id = #{accountId,jdbcType=INTEGER}
+  </update>
+
+    <!-- 修改企业账户信息 -->
+    <update id="updateCwAccount" parameterType="com.wupai.taiji.model.entity.CwAccount">
+        update cw_account
+        set account_name = #{accountName,jdbcType=VARCHAR},
+            `number` = #{number,jdbcType=VARCHAR},
+            cardholder_name = #{cardholderName,jdbcType=VARCHAR},
+            bank = #{bank,jdbcType=VARCHAR},
+            bank_name = #{bankName,jdbcType=VARCHAR},
+            merchant = #{merchant,jdbcType=VARCHAR},
+            remarks = #{remarks,jdbcType=VARCHAR},
+            updatename = #{updatename,jdbcType=VARCHAR},
+            updatetime = #{updatetime,jdbcType=TIMESTAMP}
+        where account_id = #{accountId,jdbcType=INTEGER}
+  </update>
+
+    <!-- 修改企业账户状态 -->
+    <update id="updateCwAccountState" parameterType="com.wupai.taiji.model.entity.CwAccount">
+        update cw_account
+        <if test="accountState == 0">
+            set account_state = 1
+        </if>
+        <if test="accountState == 1">
+            set account_state = 0
+        </if>
+        where account_id = #{accountId,jdbcType=INTEGER}
+  </update>
+</mapper>

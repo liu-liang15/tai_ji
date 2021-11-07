@@ -25,4 +25,9 @@
         zhu_jing,ya_jing,tqfk,
         zhuang_tai,cjr,untitled
     </sql>
+<!--    查询合同和房屋信息   -->
+    <select id="allHeTong" resultMap="BaseResultMap">
+
+
+    </select>
 </mapper>
