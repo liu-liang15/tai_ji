@@ -19,7 +19,7 @@ public class HtHeTongControll {
     HtHeTongService heTongService;
 
     public CommonResult getHeTong(@RequestBody HtHeTong heTong){
-        return heTongService.getHeTong(heTong);
+        return null;
     }
 
 

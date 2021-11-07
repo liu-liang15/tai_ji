@@ -19,7 +19,8 @@ public class KySurepre implements Serializable {
     /**
      * 客户预定收款账户
      */
-//    private ;
+//    private CwAccount cwAccount;
+    
     /**
      * 客户预定跟进人员
      */
