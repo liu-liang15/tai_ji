@@ -14,32 +14,32 @@ import lombok.Data;
 @TableName(value ="ky_pre")
 @Data
 public class KyPre implements Serializable {
+
+    /**
+     * 客户预约租房方式（合租，整租）
+     */
+    private KyTypez  typeZway;
+
+    /**
+     * 客户预约状态
+     */
+    private KyTypez typeStatu;
+
+    /**
+     * 客户预约和客户预定
+     */
+    private KySurepre kySurepre;
+    /**
+     * 预约和信息
+     */
+    private KyCustominfo kyCustominfo;
     /**
      * 预约编号
      */
     @TableId(type = IdType.AUTO)
     private Integer pid;
 
-    /**
-     * 租客编号
-     */
-    private Integer pCid;
 
-    /**
-     * 房源编号
-     */
-    private Integer pHid;
 
-    /**
-     * 预约类型（合租，整租）
-     */
-    private Integer pTid;
 
-    /**
-     * 预约状态
-     */
-    private Integer pStatuTid;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

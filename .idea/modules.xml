@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/tai_ji.iml" filepath="$PROJECT_DIR$/.idea/tai_ji.iml" />
       <module fileurl="file://$PROJECT_DIR$/taiji/taiji.iml" filepath="$PROJECT_DIR$/taiji/taiji.iml" />
+      <module fileurl="file://$PROJECT_DIR$/taiji/taiji.iml" filepath="$PROJECT_DIR$/taiji/taiji.iml" />
     </modules>
   </component>
 </project>

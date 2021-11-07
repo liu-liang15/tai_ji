@@ -18,7 +18,6 @@ public class CwAccount implements Serializable {
     /**
      * 企业账户编号
      */
-    @TableId(type = IdType.AUTO)
     private Integer accountId;
 
     /**

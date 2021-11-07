@@ -15,6 +15,29 @@ import lombok.Data;
 @TableName(value ="ky_surepre")
 @Data
 public class KySurepre implements Serializable {
+
+    /**
+     * 客户预定收款账户
+     */
+//    private CwAccount cwAccount;
+    
+    /**
+     * 客户预定跟进人员
+     */
+    private HtYuanGo kyYg;
+
+    /**
+     * 客户预定状态
+     */
+    private KyTypez kyStatu;
+    /**
+     * 客户预定和客户信息
+     */
+    private KyCustominfo kyCustominfo;
+    /**
+     * 客户预约和客户预定
+     */
+    private KyPre KyPre ;
     /**
      * 预定编号
      */
@@ -31,21 +54,9 @@ public class KySurepre implements Serializable {
      */
     private Date suntime;
 
-    /**
-     * 收款账号
-     */
-    private Integer accountId;
 
-    /**
-     * 房屋收订人
-     */
-    private Integer empid;
 
-    /**
-     * 预定状态(类别表)
-     */
-    private Integer sTid;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+
+
 }
