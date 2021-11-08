@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 入住人表 
@@ -13,6 +14,7 @@ import lombok.Data;
  */
 @TableName(value ="ht_ru_zhur")
 @Data
+@Accessors(chain = true)
 public class HtRuZhur implements Serializable {
     /**
      * 入住Id
