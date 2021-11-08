@@ -53,8 +53,8 @@
         <include refid="CwCosttype" />,
         <include refid="HtRuZhur" />
         from cw_finance f
-        inner join cw_costtype cc on f.costtype_id=cc.costtype_id
-        inner join ht_ru_zhur h on f.rz_id=h.rz_id
+        left join cw_costtype cc on f.costtype_id=cc.costtype_id
+        left join ht_ru_zhur h on f.rz_id=h.rz_id
     </select>
 
     <!--  多条件查询-->
@@ -93,7 +93,7 @@
     <update id="updateCwFinancestate1" parameterType="com.wupai.taiji.model.entity.CwFinance">
         update cw_finance
         <if test="state == 0">
-            set state = 2
+            set state = 2,stock = #{stock,jdbcType=INTEGER}
         </if>
         <if test="state == 1">
             set state = 2
