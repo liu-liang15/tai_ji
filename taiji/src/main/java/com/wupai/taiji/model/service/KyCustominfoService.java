@@ -65,4 +65,16 @@ public  List<KyCustominfo> allMes(){
         return new PageInfo<>(list);
     }
 
+
+    /**
+     * 多条件组合查询
+     * @param customInfoVo
+     * @return
+     */
+    public PageInfo<KyCustominfo> seGroup(CustomInfoVo customInfoVo){
+        PageHelper.startPage(customInfoVo.getPageNo(),customInfoVo.getPageSize());
+        List<KyCustominfo> list= kyCustominfoMapper.seGroup(customInfoVo);
+        return new PageInfo<>(list);
+    }
+
 }

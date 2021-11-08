@@ -26,6 +26,16 @@ public class KyPreService {
         return kyPreMapper.addPre(preVo);
     }
 
+  /**
+     * 查询所有预约信息
+     * @return
+     */
+    public PageInfo<KyPre>seAllPre(PreVo preVo){
+       PageHelper.startPage(preVo.getPageNo(),preVo.getPageSize());
+        List<KyPre> list= kyPreMapper.seAllPre();
+        return new PageInfo<>(list);
+    }
+
 
 
 }

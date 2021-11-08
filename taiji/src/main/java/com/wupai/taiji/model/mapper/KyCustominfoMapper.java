@@ -44,7 +44,10 @@ public interface KyCustominfoMapper extends BaseMapper<KyCustominfo> {
      * 多条件组合查询
      * @return
      */
-    List<KyCustominfo>seGroup();
+    List<KyCustominfo> seGroup(CustomInfoVo customInfoVo);
+
+//编号查询
+    KyCustominfo seById(Integer cid);
 }
 
 

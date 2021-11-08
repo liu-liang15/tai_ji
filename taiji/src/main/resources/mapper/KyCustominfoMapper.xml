@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wupai.taiji.model.mapper.KyCustominfoMapper">
 
+    <!---->
     <!--结果集-->
     <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.KyCustominfo">
             <id property="cid" column="cid" jdbcType="INTEGER"/>
@@ -72,4 +73,24 @@
         where  ky_custominfo.cname=#{cname}
     </select>
 
+    <!--组合查询 来源类型  名字 手机号码-->
+    <select id="seGroup" parameterType="com.wupai.taiji.vo.CustomInfoVo" resultMap="BaseResultMap">
+     select
+        ky_custominfo.cid,ky_custominfo.cname,ky_custominfo.ctel,
+        ky_custominfo.cardnum,ky_custominfo.csex,ky_custominfo.c_typeid,ky_uneed.`u_cid`,ky_uneed.`u_intime`,ky_uneed.`u_tenancy_tid`,ky_uneed.`u_address`
+        from  ky_custominfo inner join
+        ky_uneed on ky_custominfo.`cid`=ky_uneed.`u_cid`
+        <where>
+            <if test="cTypeid!=0 and cTypeid!=null">
+              and  ky_custominfo.c_typeid=#{cTypeid}
+            </if>
+          </where>
+    </select>
+
+    <!--根据编号查询-->
+    <select id="seById" resultType="com.wupai.taiji.model.entity.KyCustominfo">
+        select <include refid="Base_Column_List"/>
+        from ky_custominfo
+        where cid=#{cid}
+    </select>
 </mapper>

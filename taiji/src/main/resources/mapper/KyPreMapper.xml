@@ -8,10 +8,18 @@
     <resultMap id="premes" type="com.wupai.taiji.model.entity.KyPre">
         <id column="pid" property="pid"></id>
         <result column="p_time" property="ptime"></result>
+        <!--预约状态-->
         <association property="typeStatu"
                      javaType="com.wupai.taiji.model.entity.KyTypez"
         select="com.wupai.taiji.model.mapper.KyTypezMapper.seByTid"
-        column="p_statu_tis">
+        column="p_statu_tid">
+        </association>
+        <!--客户信息-->
+        <association property="kyCustominfo"
+        javaType="com.wupai.taiji.model.entity.KyCustominfo"
+        select="com.wupai.taiji.model.mapper.KyCustominfoMapper.seById"
+        column="p_cid">
+
         </association>
     </resultMap>
 
@@ -36,7 +44,10 @@
         where p_cid =#{cid}
     </select>
 
-
+    <!--查询所有预约-->
+<select id="seAllPre" resultMap="premes">
+    select * from  ky_pre
+</select>
 
 
 </mapper>
