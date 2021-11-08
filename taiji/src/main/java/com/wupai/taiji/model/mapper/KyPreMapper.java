@@ -23,6 +23,17 @@ public interface KyPreMapper extends BaseMapper<KyPre> {
     KyPre seByCid(Integer cid);
 
 
+    /**
+     * 查询所有
+     * @return
+     */
+    List<KyPre>seAllPre();
+
+    /**
+     * 组合查询所有
+     * @return
+     */
+    List<KyPre>seAllGPre(PreVo preVo);
 
 }
 

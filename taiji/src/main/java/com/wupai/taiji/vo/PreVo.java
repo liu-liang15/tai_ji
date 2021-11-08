@@ -7,16 +7,26 @@ import java.sql.Timestamp;
 /**
  * @author 杨思
  * @date 2021年 11月08日3:07
- */
+ *
+  */
 public class PreVo {
     private Integer pid;
-    private Integer pcid;
-    private Integer phid;
+    private Integer pcid;//租房类型
+    private Integer phid;//房源地址
     private Integer pstatid;
     @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Timestamp ptime;
     private Integer pageNo;
     private Integer pageSize;
+    private String pname;//姓名
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
 
     public Integer getPageNo() {
         return pageNo;
@@ -37,7 +47,7 @@ public class PreVo {
     public PreVo() {
     }
 
-    public PreVo(Integer pid, Integer pcid, Integer phid, Integer pstatid, Timestamp ptime, Integer pageNo, Integer pageSize) {
+    public PreVo(Integer pid, Integer pcid, Integer phid, Integer pstatid, Timestamp ptime, Integer pageNo, Integer pageSize, String pname) {
         this.pid = pid;
         this.pcid = pcid;
         this.phid = phid;
@@ -45,6 +55,7 @@ public class PreVo {
         this.ptime = ptime;
         this.pageNo = pageNo;
         this.pageSize = pageSize;
+        this.pname = pname;
     }
 
     public Integer getPid() {

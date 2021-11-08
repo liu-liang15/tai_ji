@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wupai.taiji.model.mapper.KyCustominfoMapper">
 
+    <!---->
     <!--结果集-->
     <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.KyCustominfo">
             <id property="cid" column="cid" jdbcType="INTEGER"/>
@@ -36,6 +37,22 @@
         </collection>
      </resultMap>
 
+    <!--客户需求和客户信息-->
+    <resultMap id="khbasemes" type="com.wupai.taiji.model.entity.KyCustominfo">
+        <id property="cid" column="cid" jdbcType="INTEGER"/>
+        <result property="cname" column="cname" jdbcType="VARCHAR"/>
+        <result property="ctel" column="ctel" jdbcType="VARCHAR"/>
+        <result property="cardnum" column="cardnum" jdbcType="VARCHAR"/>
+        <result property="csex" column="csex" jdbcType="BOOLEAN"/>
+        <!--客户需求-->
+        <collection property="kyUneeds"
+                    ofType="com.wupai.taiji.model.entity.KyUneed"
+                    select="com.wupai.taiji.model.mapper.KyUneedMapper.seByCid"
+                    column="cid">
+        </collection>
+
+    </resultMap>
+
     <sql id="Base_Column_List">
         cid,cname,ctel,
         cardnum,csex,c_typeid
@@ -64,6 +81,21 @@
         from  ky_custominfo inner join
         ky_uneed on ky_custominfo.`cid`=ky_uneed.`u_cid`
     </select>
+
+
+
+    <!--模糊查询客户和需求表结果-->
+    <select id="seMoreLike" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>,ky_uneed.`u_cid`,ky_uneed.`u_intime`,ky_uneed.`u_tenancy_tid`,ky_uneed.`u_address`
+        from  ky_custominfo inner join
+        ky_uneed on ky_custominfo.`cid`=ky_uneed.`u_cid`
+        <where>
+         <if test="cname!='' and cname!=null">
+                and ky_custominfo.cname  like  concat('%',#{cname},'%')
+            </if>
+        </where>
+    </select>
+
     <!--根据名字查询其他信息-->
     <select id="seByName" resultMap="BaseResultMap">
         select  <include refid="Base_Column_List"/>,ky_uneed.uid,ky_uneed.u_address,ky_uneed.u_cid
@@ -72,4 +104,24 @@
         where  ky_custominfo.cname=#{cname}
     </select>
 
+    <!--组合查询 来源类型  名字 手机号码-->
+    <select id="seGroup" parameterType="com.wupai.taiji.vo.CustomInfoVo" resultMap="BaseResultMap">
+     select
+        ky_custominfo.cid,ky_custominfo.cname,ky_custominfo.ctel,
+        ky_custominfo.cardnum,ky_custominfo.csex,ky_custominfo.c_typeid,ky_uneed.`u_cid`,ky_uneed.`u_intime`,ky_uneed.`u_tenancy_tid`,ky_uneed.`u_address`
+        from  ky_custominfo inner join
+        ky_uneed on ky_custominfo.`cid`=ky_uneed.`u_cid`
+        <where>
+            <if test="cTypeid!=0 and cTypeid!=null">
+              and  ky_custominfo.c_typeid=#{cTypeid}
+            </if>
+          </where>
+    </select>
+
+    <!--根据编号查询-->
+    <select id="seById" resultMap="khbasemes">
+        select <include refid="Base_Column_List"/>
+        from ky_custominfo
+        where cid=#{cid}
+    </select>
 </mapper>

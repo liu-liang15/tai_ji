@@ -2,6 +2,7 @@ package com.wupai.taiji.model.mapper;
 
 import com.wupai.taiji.model.entity.KyCustominfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wupai.taiji.model.entity.KyUneed;
 import com.wupai.taiji.vo.CustomInfoVo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -44,7 +45,17 @@ public interface KyCustominfoMapper extends BaseMapper<KyCustominfo> {
      * 多条件组合查询
      * @return
      */
-    List<KyCustominfo>seGroup();
+    List<KyCustominfo> seGroup(CustomInfoVo customInfoVo);
+
+//编号查询
+    KyCustominfo seById(Integer cid);
+
+
+    /**
+     * 根据名字模糊查询
+     * @return
+     */
+    List<KyCustominfo>seMoreLike(CustomInfoVo customInfoVo);
 }
 
 

@@ -2,6 +2,7 @@ package com.wupai.taiji.model.mapper;
 
 import com.wupai.taiji.model.entity.KyUneed;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wupai.taiji.vo.CustomInfoVo;
 import com.wupai.taiji.vo.UneedVo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -20,10 +21,12 @@ public interface KyUneedMapper extends BaseMapper<KyUneed> {
     public int addUneed(UneedVo uneedVo);
 
     /**
-     * 新增用户需求
+     * 根据需求编号查询
      * @return
      */
     List<KyUneed>seByCid(UneedVo uneedVo);
+
+
 }
 
 

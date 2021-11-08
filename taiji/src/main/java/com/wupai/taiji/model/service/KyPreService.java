@@ -26,6 +26,26 @@ public class KyPreService {
         return kyPreMapper.addPre(preVo);
     }
 
+  /**
+     * 查询所有预约信息
+     * @return
+     */
+    public PageInfo<KyPre>seAllPre(PreVo preVo){
+       PageHelper.startPage(preVo.getPageNo(),preVo.getPageSize());
+        List<KyPre> list= kyPreMapper.seAllPre();
+        return new PageInfo<>(list);
+    }
 
+
+    /**
+     * 组合查询所有预约信息
+     * @return
+     */
+    public PageInfo<KyPre>seAllGPre (PreVo preVo){
+        System.out.println(preVo.getPhid()+"111111111111"+preVo.getPcid()+"查询到的信息 p_hid  pcid");
+        PageHelper.startPage(preVo.getPageNo(),preVo.getPageSize());
+        List<KyPre> list= kyPreMapper.seAllGPre(preVo);
+        return new PageInfo<>(list);
+    }
 
 }

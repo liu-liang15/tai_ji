@@ -36,6 +36,6 @@
     <select id="seByCid" resultMap="uneesmes">
         select <include refid="Base_Column_List"/>
         from ky_uneed
-        where u_cid=#{ucid}
+        where u_cid=#{cid}
     </select>
 </mapper>

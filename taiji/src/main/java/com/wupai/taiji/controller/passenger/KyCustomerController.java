@@ -42,7 +42,6 @@ public class KyCustomerController {
        KyTypez typez=new KyTypez();
         typez.setTid(cTypeid);
         KyCustominfo custominfo=new KyCustominfo();
-//        custominfo.setCTypeid(typez);
         custominfo.setCtype(typez);
         custominfo.setCsex(csex);
         custominfo.setCardnum(cardnum);
@@ -97,5 +96,21 @@ public class KyCustomerController {
         return kyCustominfoService.seMoreMes(customInfoVo);
     }
 
+    /**
+     * 多条件组合查询
+     * @param customInfoVo
+     * @return
+     */
+    @PostMapping("/group")
+    public PageInfo<KyCustominfo> seGroup(@RequestBody CustomInfoVo customInfoVo){
+        return kyCustominfoService.seGroup(customInfoVo);
+    }
+
+
+
+@PostMapping("/morelike")
+public PageInfo<KyCustominfo> seMoreLike(@RequestBody CustomInfoVo customInfoVo){
+    return kyCustominfoService.seMoreLike(customInfoVo);
+}
 
 }
