@@ -1,40 +1,21 @@
 package com.wupai.taiji.model.entity;
 
+
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import lombok.Data;
 
-/**
- * 
- * @TableName fg_room_type
- */
-@TableName(value ="fg_room_type")
 @Data
-public class FgRoomType implements Serializable {
-    /**
-     * 房间户型id
-     */
-    @TableId(type = IdType.AUTO)
-    private Integer typeId;
+@TableName(value = "fg_room_type")
+public class FgRoomType {
 
-    /**
-     * 房间户型（主卧..）
-     */
-    private String typeName;
+  //主键
+  @TableId(type = IdType.AUTO)
+  private Integer typeId;
+  private String typeName;
+  private long typeNum;
+  private String typeRemark;
 
-    /**
-     * 排序值
-     */
-    private Integer typeNum;
 
-    /**
-     * 房间描述
-     */
-    private String typeRemark;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

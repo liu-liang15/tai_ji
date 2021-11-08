@@ -1,35 +1,23 @@
 package com.wupai.taiji.model.service;
 
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.wupai.taiji.model.entity.FyHousing;
-import com.wupai.taiji.model.mapper.FyHousingMapper;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
-/**
- *
- */
-@Service
-public class FyHousingService  {
-@Resource
-FyHousingMapper fyHousingMapper;
+public interface FyHousingService extends IService<FyHousing> {
 
     /**
      * 查询所有房源
      * @return
      */
-   public List<FyHousing> seAllHouses(){
-       return fyHousingMapper.seAllHouses();
-   }
-
+    List<FyHousing> getFyHousingList();
 
     /**
-     * 根据名字查询
+     * 查询所有房源和房间
      * @return
      */
-   public  FyHousing seByCity(String city){
-       return fyHousingMapper.seByCity(city);
-   }
+    List<FyHousing> selectHousingList();
+
 }

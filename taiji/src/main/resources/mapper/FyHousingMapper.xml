@@ -1,53 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wupai.taiji.model.mapper.FyHousingMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.FyHousing">
-            <id property="houseId" column="house_id" jdbcType="INTEGER"/>
-            <result property="city" column="city" jdbcType="VARCHAR"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="roomNum" column="room_num" jdbcType="VARCHAR"/>
-            <result property="hall" column="hall" jdbcType="VARCHAR"/>
-            <result property="defend" column="defend" jdbcType="VARCHAR"/>
-            <result property="kitchen" column="kitchen" jdbcType="VARCHAR"/>
-            <result property="inLayers" column="In_layers" jdbcType="VARCHAR"/>
-            <result property="totalCeng" column="total_ceng" jdbcType="VARCHAR"/>
-            <result property="orientationId" column="orientation_id" jdbcType="INTEGER"/>
-            <result property="houseMeters" column="house_meters" jdbcType="VARCHAR"/>
-            <result property="fitmentId" column="fitment_id" jdbcType="INTEGER"/>
-            <result property="houserRentDate" column="houser_rent_date" jdbcType="TIMESTAMP"/>
-            <result property="rentalPrices" column="rental_prices" jdbcType="DECIMAL"/>
-            <result property="houseFloorPrice" column="house_floor_price" jdbcType="DECIMAL"/>
-            <result property="housePaymentMethod" column="house_payment_method" jdbcType="VARCHAR"/>
-            <result property="featureId" column="feature_id" jdbcType="INTEGER"/>
-            <result property="houseProperty" column="house_property" jdbcType="VARCHAR"/>
-            <result property="homeState" column="home_state" jdbcType="INTEGER"/>
-            <result property="jointRent" column="joint_rent" jdbcType="INTEGER"/>
-            <result property="natureId" column="nature_id" jdbcType="INTEGER"/>
+<mapper namespace="com.wupai.taiji.model.mapper.FyHousingMapper">
+  
+    <resultMap id="Housing" type="com.wupai.taiji.model.entity.FyHousing">
+        <id column="house_id" property="houseId"></id>
+        <result column="city" property="city"></result>
+        <result column="room_num" property="roomNum"></result>
+        <result column="hall" property="hall"></result>
+        <result column="defend" property="defend"></result>
+        <result column="kitchen" property="kitchen"></result>
+        <result column="In_layers" property="inLayers"></result>
+        <result column="total_ceng" property="totalCeng"></result>
+        <result column="house_meters" property="houseMeters"></result>
+        <result column="houser_rent_date" property="houserRentDate"></result>
+        <result column="rental_prices" property="rentalPrices"></result>
+        <result column="house_floor_price" property="houseFloorPrice"></result>
+        <result column="house_payment_method" property="housePaymentMethod"></result>
+        <result column="house_property" property="houseProperty"></result>
+        <result column="home_state" property="homeState"></result>
+        <result column="joint_rent" property="jointRent"></result>
+
+<!--        <association property="fgFeature" javaType="com.itmk.web.estate.entity.FgFeature">-->
+<!--            <id column="feature_id" property="featureId"></id>-->
+<!--            <result column="feature_name" property="featureName"></result>-->
+<!--        </association>-->
+
+<!--        <association property="fgFitment" javaType="com.itmk.web.estate.entity.FgFitment">-->
+<!--            <id column="fitment_id" property="fitmentId"></id>-->
+<!--            <result column="fitment_name" property="fitmentName"></result>-->
+<!--        </association>-->
+
+<!--        <association property="fgNature" javaType="com.itmk.web.estate.entity.FgNature">-->
+<!--            <id column="nature_id" property="natureId"></id>-->
+<!--            <result column="nature_name" property="natureName"></result>-->
+<!--        </association>-->
+
+<!--        <association property="fgOrientation" javaType="com.itmk.web.estate.entity.FgOrientation">-->
+<!--            <id column="orientation_id" property="orientationId"></id>-->
+<!--            <result column="orientation_name" property="orientationName"></result>-->
+<!--        </association>-->
+
+        <collection property="fyRooms" ofType="com.wupai.taiji.model.entity.FyRoom">
+            <id column="room_id" property="roomId"></id>
+            <result column="room_name" property="roomName"></result>
+            <result column="room_square_meters" property="roomSquareMeters"></result>
+            <result column="room_prices" property="roomPrices"></result>
+            <result column="room_floor_price" property="roomFloorPrice"></result>
+            <result column="room_payment_method" property="roomPaymentMethod"></result>
+            <result column="rent_time" property="rentTime"></result>
+            <result column="contract_time" property="contractTime"></result>
+        </collection>
+
     </resultMap>
 
-    <sql id="Base_Column_List">
-        house_id,city,user_id,
-        room_num,hall,defend,
-        kitchen,In_layers,total_ceng,
-        orientation_id,house_meters,fitment_id,
-        houser_rent_date,rental_prices,house_floor_price,
-        house_payment_method,feature_id,house_property,
-        home_state,joint_rent,nature_id
-    </sql>
-
-
-    <!--查询所有房源的地址信息-->
-    <select id="seAllHouses" resultType="com.wupai.taiji.model.entity.FyHousing">
-        select house_id,city
-        from fy_housing
-      </select>
-
-    <!--根据编号查询-->
-    <select id="seByCity" resultType="com.wupai.taiji.model.entity.FyHousing">
-        select house_floor_price,city from fy_housing
-        where city=#{city}
+    <select id="selectHousingList" resultMap="Housing">
+        select * from fy_housing fh left join fy_room fr on fh.house_id = fr.house_id where fh.joint_rent = 0
     </select>
+
+
 </mapper>
