@@ -8,30 +8,51 @@
             <id property="zjId" column="zj_id" jdbcType="INTEGER"/>
             <result property="htId" column="ht_id" jdbcType="VARCHAR"/>
             <result property="fwId" column="fw_id" jdbcType="VARCHAR"/>
-            <result property="czr" column="czr" jdbcType="VARCHAR"/>
             <result property="htksSj" column="htks_sj" jdbcType="TIMESTAMP"/>
             <result property="htdqSj" column="htdq_sj" jdbcType="TIMESTAMP"/>
             <result property="zhuJing" column="zhu_jing" jdbcType="DECIMAL"/>
             <result property="yaJing" column="ya_jing" jdbcType="DECIMAL"/>
             <result property="tqfk" column="tqfk" jdbcType="INTEGER"/>
             <result property="zhuangTai" column="zhuang_tai" jdbcType="VARCHAR"/>
-            <result property="cjr" column="cjr" jdbcType="VARCHAR"/>
-            <result property="untitled" column="untitled" jdbcType="VARCHAR"/>
+            <result property="qysj" column="qysj" jdbcType="VARCHAR"/>
+
+            <association property="cjr" javaType="com.wupai.taiji.model.entity.HtYuanGo">
+                <id property="ygId" column="yg_id" jdbcType="INTEGER"/>
+                <result property="ygName" column="yg_name" jdbcType="VARCHAR"/>
+            </association>
+
+            <association property="czr" javaType="com.wupai.taiji.model.entity.HtRuZhur">
+                <id property="rzId" column="rz_id" jdbcType="INTEGER"/>
+                <result property="name" column="name" jdbcType="VARCHAR"/>
+                <result property="phone" column="phone" jdbcType="VARCHAR"/>
+                <result property="sfz" column="sfz" jdbcType="VARCHAR"/>
+            </association>
+            <association property="fyHousing" javaType="com.wupai.taiji.model.entity.FyHousing">
+                <id property="houseId" column="house_id" jdbcType="INTEGER"/>
+                <result property="city" column="city" jdbcType="VARCHAR"/>
+            </association>
     </resultMap>
 
     <sql id="Base_Column_List">
        zj_id,ht_id,fw_id,
         czr,htks_sj,htdq_sj,
         zhu_jing,ya_jing,tqfk,
-        zhuang_tai,cjr,untitled,
+        zhuang_tai,cjr,qysj,
 		city,house_payment_method,
-		name,phone,sfz
+
+		house_id,city,
+
+        name,phone,sfz,
+
+        yg_id,yg_name
     </sql>
 
 <!--    查询合同和房屋信息   -->
-    <select id="allHeTong" resultType="java.util.Map">
-        select <include refid="Base_Column_List"/> from
-                ht_he_tong ht left join fy_housing fy on ht.fw_id = fy.house_id
+    <select id="allHeTong" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+                from    ht_he_tong ht
+                left join fy_housing fy on ht.fw_id = fy.house_id
                 left join ht_ru_zhur rz on ht.czr = rz.rz_id
+                left join ht_yuan_go yg on ht.cjr = yg.yg_id
     </select>
 </mapper>

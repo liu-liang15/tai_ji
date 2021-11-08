@@ -27,35 +27,6 @@ public class FyHousing implements Serializable {
      */
     private String city;
 
-    /**
-     * 小区名称
-     */
-    private String plotName;
-
-    /**
-     * 区域
-     */
-    private String area;
-
-    /**
-     * 房屋编号（唯一）
-     */
-    private String houseNumber;
-
-    /**
-     * 楼号
-     */
-    private String buildingNo;
-
-    /**
-     * 单元
-     */
-    private String unit;
-
-    /**
-     * 室
-     */
-    private String house;
 
     /**
      * 房源负责人（外键）id

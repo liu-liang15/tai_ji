@@ -1,9 +1,8 @@
 package com.wupai.taiji.model.mapper;
 
 import com.wupai.taiji.model.entity.CwAccount;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wupai.taiji.model.entity.CwCosttype;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  */
 @Mapper
 public interface CwAccountMapper {
-    List<CwAccount> selectAllCwAccount();//查询所有企业账户
+    List<CwAccount> selectAllCwAccount(@Param("value") String value,@Param("input") String input);//查询所有企业账户
 
     int addCwAccount(CwAccount record);//新增企业账户
 

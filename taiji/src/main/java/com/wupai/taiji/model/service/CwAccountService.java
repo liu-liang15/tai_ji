@@ -19,9 +19,9 @@ public class CwAccountService  {
     private CwAccountMapper cwAccountMapper;
 
     //分页查询所有企业账户
-    public PageInfo<CwAccount> selectAllCwAccount(@RequestParam("currentPage") int currentPage, @RequestParam("pagesize") int pagesize){
+    public PageInfo<CwAccount> selectAllCwAccount(@RequestParam("currentPage") int currentPage, @RequestParam("pagesize") int pagesize, @RequestParam(value = "value",required = false) String value, @RequestParam(value = "input",required = false) String input){
         PageHelper.startPage(currentPage,pagesize);
-        List<CwAccount> entityPage=cwAccountMapper.selectAllCwAccount();
+        List<CwAccount> entityPage=cwAccountMapper.selectAllCwAccount(value, input);
         PageInfo<CwAccount> classtypePageInfo=new PageInfo<>(entityPage);
         return classtypePageInfo;
     }

@@ -50,4 +50,8 @@ public class KyTypez implements Serializable {
     private Integer tcid;
 
 
+    public Integer getTid() {
+        return tid;
+    }
+
 }

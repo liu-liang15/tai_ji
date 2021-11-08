@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -35,17 +38,19 @@ public class HtHeTong implements Serializable {
     /**
      * 承租人
      */
-    private String czr;
+    private HtRuZhur czr;
 
     /**
      * 合同开始时间
      */
-    private Date htksSj;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp htksSj;
 
     /**
      * 合同到期时间
      */
-    private Date htdqSj;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp htdqSj;
 
     /**
      * 每月租金（房源表查）
@@ -70,13 +75,16 @@ public class HtHeTong implements Serializable {
     /**
      * 成交人
      */
-    private String cjr;
+    private HtYuanGo cjr;
 
     /**
      * 备用字段
      */
-    private String untitled;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Timestamp qysj;
 
     @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+    private FyHousing fyHousing;
+
+
 }

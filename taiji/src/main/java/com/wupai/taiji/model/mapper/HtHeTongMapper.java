@@ -13,7 +13,7 @@ import java.util.Map;
 @Mapper
 public interface HtHeTongMapper extends BaseMapper<HtHeTong> {
 
-    List allHeTong(HtHeTong heTong);
+    List<HtHeTong> allHeTong(HtHeTong heTong);
 }
 
 
