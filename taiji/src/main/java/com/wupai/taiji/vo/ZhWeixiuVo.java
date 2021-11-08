@@ -2,10 +2,7 @@ package com.wupai.taiji.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import oracle.sql.TIMESTAMP;
-
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * @author wenlijun

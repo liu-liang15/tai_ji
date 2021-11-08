@@ -7,12 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> 8766ebfda2cee99f0968aeafdb464a59720ced71
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 

@@ -1,8 +1,4 @@
-<<<<<<< HEAD:taiji/src/main/java/com/wupai/taiji/controller/finance/CwCosttypeController.java
 package com.wupai.taiji.controller.finance;
-=======
-package com.wupai.taiji.controller.CwCosttype;
->>>>>>> 8766ebfda2cee99f0968aeafdb464a59720ced71:taiji/src/main/java/com/wupai/taiji/controller/CwCosttype/CwCosttypeController.java
 
 import com.github.pagehelper.PageInfo;
 import com.wupai.taiji.model.entity.CwCosttype;
