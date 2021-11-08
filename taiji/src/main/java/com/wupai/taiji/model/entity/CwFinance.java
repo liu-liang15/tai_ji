@@ -19,38 +19,19 @@ public class CwFinance implements Serializable {
     /**
      * 财务信息编号
      */
-    @TableId(type = IdType.AUTO)
     private Integer financeId;
 
     /**
-     * 客户编号（外键）
+     * 入住编号（外键）
      */
-    private String cid;
-
-    /**
-     * 房源ID（外键）
-     */
-    private String houseId;
+    private HtRuZhur htRuZhur;
+    private String rzId;
 
     /**
      * 费用类型
      */
+    private CwCosttype cwCosttype;
     private String costtypeId;
-
-    /**
-     * 客户电话
-     */
-    private String phone;
-
-    /**
-     * 房源编号
-     */
-    private String listing;
-
-    /**
-     * 房源地址
-     */
-    private String listingAddress;
 
     /**
      * 费用描述

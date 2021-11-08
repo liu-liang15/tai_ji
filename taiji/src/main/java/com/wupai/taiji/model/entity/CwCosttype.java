@@ -3,6 +3,7 @@ package com.wupai.taiji.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -58,5 +59,6 @@ public class CwCosttype implements Serializable {
      */
     private Integer timeliness;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }
