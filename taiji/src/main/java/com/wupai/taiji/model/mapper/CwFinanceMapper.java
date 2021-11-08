@@ -13,7 +13,7 @@ import java.util.List;
 public interface CwFinanceMapper {
     List<CwFinance> selectAllCwFinance();
 
-    int addCwFinance(@Param("cwfinances") List<CwFinance> cwfinances);//新增财务收支
+    int addCwFinance(CwFinance cwFinance);//新增财务收支
 
     List<CwFinance> selectCwFinance(@Param("value") String value, @Param("input") String input);//查询所有财务收支
 

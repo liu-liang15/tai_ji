@@ -38,7 +38,7 @@
             account_name like CONCAT(CONCAT('%',#{input},'%'))
           </if>
           <if test="value=='持卡人姓名' and input!=null">
-              cardholder_name like CONCAT(CONCAT('%',#{input},'%'))
+            cardholder_name like CONCAT(CONCAT('%',#{input},'%'))
           </if>
         </where>
       </select>
