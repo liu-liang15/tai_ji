@@ -8,7 +8,9 @@
     <resultMap id="premes" type="com.wupai.taiji.model.entity.KyPre">
         <id column="pid" property="pid"></id>
         <result column="p_time" property="ptime"></result>
-        <!--预约状态-->
+        <!--预约状态typeStatu-->
+
+        <!--租房类型-->
         <association property="typeStatu"
                      javaType="com.wupai.taiji.model.entity.KyTypez"
         select="com.wupai.taiji.model.mapper.KyTypezMapper.seByTid"
@@ -46,8 +48,27 @@
 
     <!--查询所有预约-->
 <select id="seAllPre" resultMap="premes">
-    select * from  ky_pre
+    select
+    <include refid="Base_Column_List"/>
+     from  ky_pre
+    order by pid
+    desc
 </select>
 
+    <!--
+ 组合查询-->
+    <select id="seAllGPre" resultMap="premes">
+    select
+    <include refid="Base_Column_List"/>
+    from  ky_pre
+    <where>
+        <if test="phid!='' and phid!=null and phid!=0">
+          and  ky_pre.p_hid=#{phid}
+        </if>
+        <if test="pcid!=0 and pcid!=null and pcid!=''">
+            and  ky_pre.p_cid=#{pcid}
+        </if>
+    </where>
+</select>
 
 </mapper>

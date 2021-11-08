@@ -29,7 +29,11 @@ public interface KyPreMapper extends BaseMapper<KyPre> {
      */
     List<KyPre>seAllPre();
 
-
+    /**
+     * 组合查询所有
+     * @return
+     */
+    List<KyPre>seAllGPre(PreVo preVo);
 
 }
 

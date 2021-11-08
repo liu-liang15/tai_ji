@@ -77,4 +77,15 @@ public  List<KyCustominfo> allMes(){
         return new PageInfo<>(list);
     }
 
+
+    /**
+     * 根据名字模糊查询
+     * @return
+     */
+     public PageInfo<KyCustominfo> seMoreLike(CustomInfoVo customInfoVo){
+        PageHelper.startPage(customInfoVo.getPageNo(),customInfoVo.getPageSize());
+        List<KyCustominfo> list= kyCustominfoMapper.seMoreLike(customInfoVo);
+        return new PageInfo<>(list);
+    }
+
 }

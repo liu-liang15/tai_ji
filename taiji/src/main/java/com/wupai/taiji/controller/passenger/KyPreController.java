@@ -41,7 +41,16 @@ public PageInfo<KyPre> sAll(@RequestBody PreVo preVo){
 }
 
 
+    /**
+     * 组合查询
+     * @param preVo
+     * @return
+     */
+    @PostMapping("/group")
+    public PageInfo<KyPre> seAllGPre(@RequestBody PreVo preVo){
+        System.out.println("参数"+preVo.getPcid()+"参数a"+preVo.getPhid());
 
-
+        return kyPreService.seAllGPre(preVo);
+    }
 
 }
