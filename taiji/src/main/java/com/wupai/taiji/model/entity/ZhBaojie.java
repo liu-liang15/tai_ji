@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.sql.Timestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -23,7 +26,8 @@ public class ZhBaojie implements Serializable {
     /**
      * 预约上门时间
      */
-    private String bjTime;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp bjTime;
 
     /**
      * 联系电话
@@ -38,12 +42,12 @@ public class ZhBaojie implements Serializable {
     /**
      * 房屋地址外键编号
      */
-    private String fyId;
+    private String  fyCity;
 
     /**
      * 保洁单状态
      */
-    private String ztId;
+    private Integer ztId;
 
     /**
      * 租客姓名

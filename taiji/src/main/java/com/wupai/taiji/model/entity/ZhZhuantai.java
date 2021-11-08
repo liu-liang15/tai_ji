@@ -15,13 +15,13 @@ import lombok.Data;
 @Data
 public class ZhZhuantai implements Serializable {
     /**
-     * 
+     * 维修状态id
      */
     @TableId
     private Integer zttId;
 
     /**
-     * 
+     * 维修状态
      */
     private String zttName;
 

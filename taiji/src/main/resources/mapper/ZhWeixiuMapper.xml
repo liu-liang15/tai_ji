@@ -1,21 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wupai.taiji.model.mapper.ZhWeixiuMapper">
 
-    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.ZhWeixiu">
-            <id property="wxId" column="wx_id" jdbcType="INTEGER"/>
-            <result property="wxTime" column="wx_time" jdbcType="TIMESTAMP"/>
-            <result property="wxPhone" column="wx_phone" jdbcType="VARCHAR"/>
-            <result property="wxReason" column="wx_reason" jdbcType="VARCHAR"/>
-            <result property="fwId" column="fw_id" jdbcType="VARCHAR"/>
-            <result property="ztId" column="zt_id" jdbcType="VARCHAR"/>
-            <result property="jjId" column="jj_id" jdbcType="VARCHAR"/>
-            <result property="lxId" column="lx_id" jdbcType="VARCHAR"/>
-            <result property="pxLx" column="px_lx" jdbcType="VARCHAR"/>
-            <result property="wxName" column="wx_name" jdbcType="VARCHAR"/>
-            <result property="wxLaiyuan" column="wx_laiyuan" jdbcType="VARCHAR"/>
+    <resultMap type="com.wupai.taiji.model.entity.ZhWeixiu" id="BaseResultMap" >
+        <result property="wxId" column="wx_id" jdbcType="INTEGER"/>
+        <result property="wxTime" column="wx_time" jdbcType="TIMESTAMP"/>
+        <result property="wxPhone" column="wx_phone" jdbcType="VARCHAR"/>
+        <result property="wxReason" column="wx_reason" jdbcType="VARCHAR"/>
+        <result property="fwId" column="fw_id" jdbcType="INTEGER"/>
+        <result property="ztId" column="zt_id" jdbcType="INTEGER"/>
+        <result property="jjId" column="jj_id" jdbcType="INTEGER"/>
+        <result property="lxId" column="lx_id" jdbcType="INTEGER"/>
+        <result property="pxLx" column="px_lx" jdbcType="INTEGER"/>
+        <result property="wxName" column="wx_name" jdbcType="VARCHAR"/>
+        <result property="pdName" column="pd_name" jdbcType="VARCHAR"/>
+        <result property="pdQian" column="pd_qian" jdbcType="VARCHAR"/>
+        <result property="pdBeizhu" column="pd_beizhu" jdbcType="VARCHAR"/>
+        <result property="pdDate" column="pd_date" jdbcType="TIMESTAMP"/>
+        <result property="wxCity" column="wx_city" jdbcType="VARCHAR"/>
+        <result property="ztIds" column="zt_ids" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="ZhWeixiuVo" type="com.wupai.taiji.vo.ZhWeixiuVo">
+        <id property="wxId" column="wx_id" jdbcType="INTEGER"/>
+        <result property="wxTime" column="wx_time" jdbcType="TIMESTAMP"/>
+        <result property="wxPhone" column="wx_phone" jdbcType="VARCHAR"/>
+        <result property="wxReason" column="wx_reason" jdbcType="VARCHAR"/>
+        <result property="fwId" column="fw_id" jdbcType="INTEGER"/>
+        <result property="ztId" column="zt_id" jdbcType="INTEGER"/>
+        <result property="jjId" column="jj_id" jdbcType="INTEGER"/>
+        <result property="lxId" column="lx_id" jdbcType="INTEGER"/>
+        <result property="pxLx" column="px_lx" jdbcType="INTEGER"/>
+        <result property="wxName" column="wx_name" jdbcType="VARCHAR"/>
+        <result property="wxLaiyuan" column="wx_laiyuan" jdbcType="VARCHAR"/>
+        <result property="zttName" column="ztt_name" jdbcType="VARCHAR"/>
+        <result property="lxName" column="lx_name" jdbcType="VARCHAR"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="plotName" column="plot_name" jdbcType="VARCHAR"/>
+        <result property="area" column="area" jdbcType="VARCHAR"/>
+        <result property="houseNumber" column="house_number" jdbcType="VARCHAR"/>
+        <result property="buildingNo" column="building_no" jdbcType="VARCHAR"/>
+        <result property="unit" column="unit" jdbcType="VARCHAR"/>
+        <result property="house" column="house" jdbcType="VARCHAR"/>
+        <result property="wxjjname" column="wxjjname" jdbcType="VARCHAR"/>
+        <result property="pdTime" column="pd_time" jdbcType="TIMESTAMP"/>
+        <result property="grName" column="gr_name" jdbcType="VARCHAR"/>
+        <result property="pdName" column="pd_name" jdbcType="VARCHAR"/>
+        <result property="pdQian" column="pd_qian" jdbcType="VARCHAR"/>
+        <result property="pdBeizhu" column="pd_beizhu" jdbcType="VARCHAR"/>
+        <result property="pdDate" column="pd_date" jdbcType="TIMESTAMP"/>
+        <result property="wxCity" column="wx_city" jdbcType="VARCHAR"/>
+        <result property="ztIds" column="zt_ids" jdbcType="VARCHAR"/>
+
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -24,4 +60,125 @@
         jj_id,lx_id,px_lx,
         wx_name,wx_laiyuan
     </sql>
+
+
+
+    <select id="findBypage" resultMap="ZhWeixiuVo">
+     SELECT * FROM zh_weixiu
+ LEFT JOIN zh_jj j ON j.`wxjjid`=zh_weixiu.`jj_id`
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insertBatchaa" keyProperty="wxId" useGeneratedKeys="true">
+        insert into tai_ji.zh_weixiu(wx_time, wx_phone, wx_reason,jj_id, lx_id, wx_name, wx_laiyuan,wx_city)
+        values (#{wxTime}, #{wxPhone}, #{wxReason}, #{jjId}, #{lxId}, #{wxName}, #{wxLaiyuan},#{wxCity})
+    </insert>
+
+
+    <select id="selectone" resultMap="ZhWeixiuVo">
+         SELECT * FROM zh_weixiu
+        LEFT JOIN zh_jj j ON j.`wxjjid`=zh_weixiu.`jj_id`
+        <where>
+            zt_ids=#{ids}
+        </where>
+    </select>
+
+    <!--通过主键修改数据维修表-->
+    <update id="update">
+        update tai_ji.zh_weixiu
+        <set>
+            <if test="pdName != null">
+                pd_name = #{pdName},
+            </if>
+            <if test="pdQian != null and pdQian != ''">
+                pd_qian = #{pdQian},
+            </if>
+            <if test="pdBeizhu != null and pdBeizhu != ''">
+                pd_beizhu = #{pdBeizhu},
+            </if>
+            <if test="pdDate != null">
+                pd_date = #{pdDate},
+            </if>
+        </set>
+        where wx_id = #{wxId}
+    </update>
+
+    <update id="updatezt">
+        update tai_ji.zh_weixiu
+        <set>
+            <if test="ztId ==  ">
+                zt_id =
+            </if>
+        </set>
+        where wx_id = #{wxId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from tai_ji.zh_weixiu where wx_id = #{wxId}
+    </delete>
+
+
+
+    <!--查询单个-->
+<!--    <select id="queryById" resultMap="ZhWeixiuMap">-->
+<!--        select-->
+<!--          wx_id, wx_time, wx_phone, wx_reason, fw_id, zt_id, jj_id, lx_id, px_lx, wx_name, wx_laiyuan-->
+<!--        from tai_ji.zh_weixiu-->
+<!--        where wx_id = #{wxId}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;查询指定行数据&ndash;&gt;-->
+<!--    <select id="queryAllByLimit" resultMap="ZhWeixiuMap">-->
+<!--        select-->
+<!--          wx_id, wx_time, wx_phone, wx_reason, fw_id, zt_id, jj_id, lx_id, px_lx, wx_name, wx_laiyuan-->
+<!--        from tai_ji.zh_weixiu-->
+<!--        limit #{offset}, #{limit}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;通过实体作为筛选条件查询&ndash;&gt;-->
+<!--    <select id="queryAll" resultMap="ZhWeixiuMap">-->
+<!--        select-->
+<!--        wx_id, wx_time, wx_phone, wx_reason, fw_id, zt_id, jj_id, lx_id, px_lx, wx_name, wx_laiyuan-->
+<!--        from tai_ji.zh_weixiu-->
+<!--        <where>-->
+<!--            <if test="wxId != null">-->
+<!--                and wx_id = #{wxId}-->
+<!--            </if>-->
+<!--            <if test="wxTime != null">-->
+<!--                and wx_time = #{wxTime}-->
+<!--            </if>-->
+<!--            <if test="wxPhone != null and wxPhone != ''">-->
+<!--                and wx_phone = #{wxPhone}-->
+<!--            </if>-->
+<!--            <if test="wxReason != null and wxReason != ''">-->
+<!--                and wx_reason = #{wxReason}-->
+<!--            </if>-->
+<!--            <if test="fwId != null">-->
+<!--                and fw_id = #{fwId}-->
+<!--            </if>-->
+<!--            <if test="ztId != null">-->
+<!--                and zt_id = #{ztId}-->
+<!--            </if>-->
+<!--            <if test="jjId != null">-->
+<!--                and jj_id = #{jjId}-->
+<!--            </if>-->
+<!--            <if test="lxId != null">-->
+<!--                and lx_id = #{lxId}-->
+<!--            </if>-->
+<!--            <if test="pxLx != null">-->
+<!--                and px_lx = #{pxLx}-->
+<!--            </if>-->
+<!--            <if test="wxName != null and wxName != ''">-->
+<!--                and wx_name = #{wxName}-->
+<!--            </if>-->
+<!--            <if test="wxLaiyuan != null and wxLaiyuan != ''">-->
+<!--                and wx_laiyuan = #{wxLaiyuan}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+
+
 </mapper>
+

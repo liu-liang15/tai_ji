@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -15,6 +18,8 @@ import lombok.Data;
 @TableName(value ="zh_weixiu")
 @Data
 public class ZhWeixiu implements Serializable {
+
+
     /**
      * 维修编号
      */
@@ -24,7 +29,8 @@ public class ZhWeixiu implements Serializable {
     /**
      * 预约上门时间
      */
-    private Date wxTime;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp wxTime;
 
     /**
      * 联系电话
@@ -39,27 +45,28 @@ public class ZhWeixiu implements Serializable {
     /**
      * 房屋地址外键编号
      */
-    private String fwId;
+    private Integer fwId;
 
     /**
      * 维修单状态外键
      */
-    private String ztId;
+    private Integer ztId;
+
 
     /**
      * 维修紧急状态外键id
      */
-    private String jjId;
+    private Integer jjId;
 
     /**
      * 维修类型外键
      */
-    private String lxId;
+    private Integer lxId;
 
     /**
      * 
      */
-    private String pxLx;
+    private Integer pxLx;
 
     /**
      * 租客姓名
@@ -70,6 +77,14 @@ public class ZhWeixiu implements Serializable {
      * 申请来源
      */
     private String wxLaiyuan;
+
+    private String pdName;
+    private String pdQian;
+    private String pdBeizhu;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp pdDate;
+    private String wxCity;
+
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
