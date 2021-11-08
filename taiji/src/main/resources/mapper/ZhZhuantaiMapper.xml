@@ -12,10 +12,4 @@
     <sql id="Base_Column_List">
         ztt_id,ztt_name
     </sql>
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 16417cb07cbce1868cd044e5f13425a73bf85825
 </mapper>

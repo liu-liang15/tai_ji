@@ -21,4 +21,8 @@
         bj_reason,fy_id,zt_id,
         wx_name,bj_laiyuan,pd_id
     </sql>
+    <select id="findBypage" resultMap="BaseResultMap">
+        select * from zh_baojie
+    </select>
+
 </mapper>

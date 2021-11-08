@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -76,6 +79,8 @@ public class HtHeTong implements Serializable {
      * 备用字段
      */
     private String untitled;
+
+
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -16,7 +16,6 @@ import java.util.List;
  * @date 2021年 11月06日17:25
  */
 @RestController
-@CrossOrigin
 public class ZhGongrenContorller {
     @Resource
     ZhGongrenService zhGongrenService;

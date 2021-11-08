@@ -1,18 +1,25 @@
-package com.wupai.taiji.model.vo;
+package com.wupai.taiji.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import oracle.sql.TIMESTAMP;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  * @author wenlijun
  * @date 2021年 11月07日9:05
  */
+@Data
 public class ZhWeixiuVo {
     private Integer wxId;
 
     /**
      * 预约上门时间
      */
-    private Date wxTime;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp wxTime;
 
     /**
      * 联系电话
@@ -59,6 +66,8 @@ public class ZhWeixiuVo {
      */
     private String wxLaiyuan;
 
+
+
     /**
      *维修状态
      */
@@ -102,5 +111,26 @@ public class ZhWeixiuVo {
      * 室
      */
     private String house;
+
+    /**
+     * 维修紧急状态名称
+     */
+    private String wxjjname;
+    /**
+     * 派单时间
+     */
+    private Timestamp pdTime;
+    /**
+     * 维修工人
+     */
+    private String grName;
+    private Integer ztIds;
+
+    private String pdName;
+    private String pdQian;
+    private String pdBeizhu;
+    private String wxCity;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp pdDate;
 
 }
