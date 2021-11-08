@@ -1,4 +1,4 @@
-package com.wupai.taiji.controller.cwcosttype;
+package com.wupai.taiji.controller.finance;
 
 import com.github.pagehelper.PageInfo;
 import com.wupai.taiji.model.entity.CwCosttype;
@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @Slf4j

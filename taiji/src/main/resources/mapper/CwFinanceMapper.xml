@@ -6,25 +6,119 @@
 
     <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.CwFinance">
             <id property="financeId" column="finance_id" jdbcType="INTEGER"/>
-            <result property="cid" column="cid" jdbcType="VARCHAR"/>
-            <result property="houseId" column="house_id" jdbcType="VARCHAR"/>
+            <result property="rzId" column="ru_id" jdbcType="VARCHAR"/>
             <result property="costtypeId" column="costtype_id" jdbcType="VARCHAR"/>
-            <result property="phone" column="phone" jdbcType="VARCHAR"/>
-            <result property="listing" column="listing" jdbcType="VARCHAR"/>
-            <result property="listingAddress" column="listing_address" jdbcType="VARCHAR"/>
             <result property="costDescription" column="cost_description" jdbcType="VARCHAR"/>
             <result property="costCyclestart" column="cost_cyclestart" jdbcType="TIMESTAMP"/>
             <result property="costCycleend" column="cost_cycleend" jdbcType="TIMESTAMP"/>
             <result property="money" column="money" jdbcType="DECIMAL"/>
             <result property="budgetsTime" column="budgets_time" jdbcType="TIMESTAMP"/>
             <result property="state" column="state" jdbcType="INTEGER"/>
+
+            <association property="cwCosttype" javaType="com.wupai.taiji.model.entity.CwCosttype">
+                <id column="costtype_id" jdbcType="INTEGER" property="costtypeId" />
+                <result column="costtype_name" jdbcType="VARCHAR" property="costtypeName" />
+                <result column="addname" jdbcType="VARCHAR" property="addname" />
+                <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+                <result column="updatename" jdbcType="VARCHAR" property="updatename" />
+                <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+                <result column="deletename" jdbcType="VARCHAR" property="deletename" />
+                <result column="deletetime" jdbcType="TIMESTAMP" property="deletetime" />
+                <result column="TimeLiness" jdbcType="INTEGER" property="timeliness" />
+            </association>
+
+            <association property="htRuZhur" javaType="com.wupai.taiji.model.entity.HtRuZhur">
+                <id column="rz_id" jdbcType="INTEGER" property="rzId" />
+                <result column="name" jdbcType="VARCHAR" property="name" />
+                <result column="phone" jdbcType="VARCHAR" property="phone" />
+                <result column="sfz" jdbcType="VARCHAR" property="sfz" />
+            </association>
     </resultMap>
 
     <sql id="Base_Column_List">
-        finance_id,cid,house_id,
-        costtype_id,phone,listing,
-        listing_address,cost_description,cost_cyclestart,
-        cost_cycleend,money,budgets_time,
-        state
-    </sql>
+    f.finance_id, f.rz_id, f.costtype_id, f.cost_description,
+    f.cost_cyclestart, f.cost_cycleend, f.money, f.budgets_time, f.`state`
+  </sql>
+    <sql id="CwCosttype">
+    cc.costtype_id, cc.costtype_name, cc.addname, cc.addtime, cc.updatename, cc.updatetime, cc.deletename,
+    cc.deletetime, cc.TimeLiness
+  </sql>
+    <sql id="HtRuZhur">
+    h.rz_id, h.`name`, h.phone, h.sfz
+  </sql>
+    <!--  分页显示所有财务收支记录-->
+    <select id="selectAllCwFinance" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />,
+        <include refid="CwCosttype" />,
+        <include refid="HtRuZhur" />
+        from cw_finance f
+        inner join cw_costtype cc on f.costtype_id=cc.costtype_id
+        inner join ht_ru_zhur h on f.rz_id=h.rz_id
+    </select>
+
+    <!--  多条件查询-->
+    <select id="selectCwFinance" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />,
+        <include refid="CwCosttype" />,
+        <include refid="HtRuZhur" />
+        from cw_finance f
+        inner join cw_costtype cc on f.costtype_id=cc.costtype_id
+        inner join ht_ru_zhur h on f.rz_id=h.rz_id
+        <where>
+            <if test="value=='收付款方姓名' and input!=null">
+                h.name like CONCAT(CONCAT('%',#{input},'%'))
+            </if>
+            <if test="value=='费用类型' and input!=null">
+                cc.costtype_name like CONCAT(CONCAT('%',#{input},'%'))
+            </if>
+        </where>
+    </select>
+
+    <!-- 新增财务收支记录 -->
+    <insert id="addCwFinance" keyColumn="finance_id" keyProperty="financeId" parameterType="com.wupai.taiji.model.entity.CwFinance" useGeneratedKeys="true">
+    insert into cw_finance (rz_id, costtype_id,
+      cost_description, cost_cyclestart, cost_cycleend,
+      money, budgets_time)
+    values
+    <foreach collection="cwfinances" item="cwfinance" separator=",">
+      (#{cwfinance.rzId}, #{cwfinance.costtypeId},
+      #{cwfinance.costDescription}, #{cwfinance.costCyclestart}, #{cwfinance.costCycleend},
+      #{cwfinance.money}, #{cwfinance.budgetsTime})
+    </foreach>
+  </insert>
+
+    <!-- 修改财务收支状态 -->
+    <update id="updateCwFinancestate1" parameterType="com.wupai.taiji.model.entity.CwFinance">
+        update cw_finance
+        <if test="state == 0">
+            set state = 2
+        </if>
+        <if test="state == 1">
+            set state = 2
+        </if>
+        <if test="state == 3">
+            set state = 2
+        </if>
+        <if test="state == 2">
+            set state = 3
+        </if>
+        <if test="state == 4">
+            set state = 2
+        </if>
+        where finance_id = #{financeId,jdbcType=INTEGER}
+    </update>
+
+    <!-- 修改财务收支状态 -->
+    <update id="updateCwFinancestate2" parameterType="com.wupai.taiji.model.entity.CwFinance">
+        update cw_finance
+        <if test="state == 2">
+            set state = 4
+        </if>
+        <if test="state == 4">
+            set state = 2
+        </if>
+        where finance_id = #{financeId,jdbcType=INTEGER}
+    </update>
 </mapper>

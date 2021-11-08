@@ -1,10 +1,8 @@
-package com.wupai.taiji.controller.cwaccount;
+package com.wupai.taiji.controller.finance;
 
 import com.github.pagehelper.PageInfo;
 import com.wupai.taiji.model.entity.CwAccount;
-import com.wupai.taiji.model.entity.CwCosttype;
 import com.wupai.taiji.model.service.CwAccountService;
-import com.wupai.taiji.model.service.CwCosttypeService;
 import com.wupai.taiji.util.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +22,8 @@ public class CwAccountController {
 
     //分页显示所有企业项目
     @GetMapping("/selectAllCwAccount")
-    public PageInfo<CwAccount> selectAllCwAccount(@RequestParam("currentPage") int currentPage, @RequestParam("pagesize") int pagesize){
-        return cwAccountService.selectAllCwAccount(currentPage,pagesize);
+    public PageInfo<CwAccount> selectAllCwAccount(@RequestParam("currentPage") int currentPage, @RequestParam("pagesize") int pagesize,@RequestParam(value = "value",required = false) String value, @RequestParam(value = "input",required = false) String input){
+        return cwAccountService.selectAllCwAccount(currentPage,pagesize,value,input);
     }
 
     //新增企业项目
