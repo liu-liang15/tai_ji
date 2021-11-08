@@ -16,6 +16,10 @@ import lombok.Data;
 @Data
 public class CwAccount implements Serializable {
     /**
+     * 客户预定
+     */
+    private KySurepre kySurepre;
+    /**
      * 企业账户编号
      */
     private Integer accountId;

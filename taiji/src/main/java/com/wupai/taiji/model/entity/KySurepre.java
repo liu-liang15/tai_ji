@@ -1,10 +1,10 @@
 package com.wupai.taiji.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
@@ -19,8 +19,8 @@ public class KySurepre implements Serializable {
     /**
      * 客户预定收款账户
      */
-//    private CwAccount cwAccount;
-    
+    private CwAccount cwAccount;
+
     /**
      * 客户预定跟进人员
      */
@@ -29,7 +29,7 @@ public class KySurepre implements Serializable {
     /**
      * 客户预定状态
      */
-    private KyTypez kyStatu;
+    private KyTypez kystatu;
     /**
      * 客户预定和客户信息
      */
@@ -53,6 +53,11 @@ public class KySurepre implements Serializable {
      * 定金失效时间
      */
     private Date suntime;
+
+    /**
+     * 定金
+     */
+    private BigDecimal smoney;
 
 
 

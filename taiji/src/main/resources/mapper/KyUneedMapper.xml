@@ -2,18 +2,40 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
 <mapper namespace="com.wupai.taiji.model.mapper.KyUneedMapper">
 
-    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.KyUneed">
-            <id property="uid" column="uid" jdbcType="INTEGER"/>
-            <result property="uCid" column="u_cid" jdbcType="INTEGER"/>
-            <result property="uNeedTid" column="u_need_tid" jdbcType="INTEGER"/>
-            <result property="uIntime" column="u_intime" jdbcType="TIMESTAMP"/>
-            <result property="uTenancyTid" column="u_tenancy_tid" jdbcType="INTEGER"/>
+    <resultMap id="uneesmes" type="com.wupai.taiji.model.entity.KyUneed">
+        <id column="uid" property="uid"></id>
+       <result column="u_address" property="uddress"></result>
+        <!--租期类型-->
+        <association property="utenancy"
+                     javaType="com.wupai.taiji.model.entity.KyTypez"
+        select="com.wupai.taiji.model.mapper.KyTypezMapper.seByTid"
+        column="u_tenancy_tid">
+
+        </association>
     </resultMap>
 
+
     <sql id="Base_Column_List">
-        uid,u_cid,u_need_tid,
-        u_intime,u_tenancy_tid
+        uid,u_cid,
+        u_intime,u_tenancy_tid,
+        u_address
     </sql>
+
+
+    <!--新增用户需求-->
+    <insert id="addUneed" parameterType="com.wupai.taiji.model.entity.KyUneed">
+        insert into ky_uneed (uid,u_cid,u_intime,u_tenancy_tid,u_address)
+        values (null,#{ucid},#{uinitime},#{utenancytid},#{uaddress})
+    </insert>
+
+    <!--根据uid查询需求-->
+    <select id="seByCid" resultMap="uneesmes">
+        select <include refid="Base_Column_List"/>
+        from ky_uneed
+        where u_cid=#{ucid}
+    </select>
 </mapper>

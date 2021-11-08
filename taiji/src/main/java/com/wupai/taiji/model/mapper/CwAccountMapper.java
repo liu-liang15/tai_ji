@@ -21,6 +21,8 @@ public interface CwAccountMapper {
     int updateCwAccountState(CwAccount record);//修改企业账户状态
 
     int delCwAccount(CwAccount record);//删除企业账户
+
+    List<CwAccount>seCountMes();//查询账户基本信息
 }
 
 

@@ -83,4 +83,10 @@
         </if>
         where account_id = #{accountId,jdbcType=INTEGER}
   </update>
+
+    <!--查看账户编号 账户号码-->
+    <select id="seCountMes" resultType="com.wupai.taiji.model.entity.CwAccount">
+        select account_id,`number` from cw_account
+    </select>
+
 </mapper>

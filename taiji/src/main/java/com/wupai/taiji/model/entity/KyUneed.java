@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -31,39 +34,20 @@ public class KyUneed implements Serializable {
      * 客户编号
      */
     private Integer uCid;
-
-    /**
-     * 需求类型编号
-     */
-    private Integer uNeedTid;
-
-    /**
+   /**
      * 入住时间
      */
-    private Date uIntime;
+   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Timestamp uIntime;
 
     /**
      * 租期类型
      */
-    private Integer uTenancyTid;
+    private KyTypez utenancy;
+
     /**
-     * 最高价格
+     * 地址
      */
-    private BigDecimal uTopmoney;
-    /**
-     * 最低价格
-     */
-    private BigDecimal uDownmoney;
-    /**
-     * 省
-     */
-    private String uProvince;
-    /**
-     * 市
-     */
-    private String uPcity;
-    /**
-     * 区
-     */
-    private String uParea;
+    private String uddress;
+
 }

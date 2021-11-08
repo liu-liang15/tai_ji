@@ -45,4 +45,17 @@
         house_payment_method,feature_id,house_property,
         home_state,joint_rent,nature_id
     </sql>
+
+
+    <!--查询所有房源的地址信息-->
+    <select id="seAllHouses" resultType="com.wupai.taiji.model.entity.FyHousing">
+        select house_id,city
+        from fy_housing
+      </select>
+
+    <!--根据编号查询-->
+    <select id="seByCity" resultType="com.wupai.taiji.model.entity.FyHousing">
+        select house_floor_price,city from fy_housing
+        where city=#{city}
+    </select>
 </mapper>

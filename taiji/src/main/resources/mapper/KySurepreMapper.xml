@@ -4,17 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wupai.taiji.model.mapper.KySurepreMapper">
 
-    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.KySurepre">
-            <id property="suid" column="suid" jdbcType="INTEGER"/>
-            <result property="sutime" column="sutime" jdbcType="TIMESTAMP"/>
-            <result property="suntime" column="suntime" jdbcType="TIMESTAMP"/>
-            <result property="accountId" column="account_id" jdbcType="INTEGER"/>
-            <result property="empid" column="empid" jdbcType="INTEGER"/>
-            <result property="sTid" column="s_tid" jdbcType="INTEGER"/>
+    <resultMap id="supremes" type="com.wupai.taiji.model.entity.KySurepre">
+        <id column="suid" property="suid"></id>
+        <result column="sutime" property="sutime"></result>
+        <result column="suntime" property="suntime"></result>
+        <result column="s_money" property="smoney"></result>
+        <association property="kystatu"
+                     javaType="com.wupai.taiji.model.entity.KyTypez"
+        select="com.wupai.taiji.model.mapper.KyTypezMapper.seByTid"
+        column="s_tid">
+
+        </association>
     </resultMap>
 
-    <sql id="Base_Column_List">
+  <sql id="Base_Column_List">
         suid,sutime,suntime,
-        account_id,empid,s_tid
+        account_id,empid,s_tid,s_money
     </sql>
+
+
+    <!--新增预定 addSuPre-->
+    <insert id="addSuPre" parameterType="com.wupai.taiji.vo.SuPreVo">
+        insert into ky_surepre (suid,sutime,suntime,account_id,empid,s_tid,s_cid,s_money)
+        values (null,#{sutime},#{suntime},#{accountId},#{empid},#{stid},#{scid},#{smoney})
+    </insert>
+
+    <!--根据客户编号查询预定-->
+    <select id="seByCid" resultMap="supremes">
+        SELECT <include refid="Base_Column_List"/> FROM ky_surepre WHERE ky_surepre.`s_cid`=#{scid}
+    </select>
 </mapper>

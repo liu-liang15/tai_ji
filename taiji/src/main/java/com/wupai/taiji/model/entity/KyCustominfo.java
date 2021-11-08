@@ -16,26 +16,26 @@ import lombok.Data;
 @TableName(value ="ky_custominfo")
 @Data
 public class KyCustominfo implements Serializable {
-    /**
+  /**
      * 客户信息客户需求一对多
      */
     private List<KyUneed> kyUneeds;
     /**
      * 客户信息客户预约
      */
-    private  List<KyPre> kyPres;
+    private  List<KyPre> kypres;
     /**
      * 客户信息客户预定
      */
-    private  List<KySurepre> kySurepres;
+    private  List<KySurepre> kysurepres;
 
     /**
      * 客户信息客户来源
      */
-    private KyTypez cTypeid;
 
-    public KyCustominfo() {
-    }
+    private KyTypez ctype;
+
+
 
     /**
      * 编号
@@ -61,7 +61,7 @@ public class KyCustominfo implements Serializable {
     /**
      * 性别（0女1男）
      */
-    private Integer csex;
+    private String csex;
 
 
 

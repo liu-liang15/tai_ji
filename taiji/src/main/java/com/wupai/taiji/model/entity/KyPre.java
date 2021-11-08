@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.sql.Timestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -15,10 +18,7 @@ import lombok.Data;
 @Data
 public class KyPre implements Serializable {
 
-    /**
-     * 客户预约租房方式（合租，整租）
-     */
-    private KyTypez  typeZway;
+
 
     /**
      * 客户预约状态
@@ -39,7 +39,8 @@ public class KyPre implements Serializable {
     @TableId(type = IdType.AUTO)
     private Integer pid;
 
-
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    private Timestamp ptime;
 
 
 }

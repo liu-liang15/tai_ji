@@ -4,13 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wupai.taiji.model.mapper.KyTypezMapper">
 
+    <!---->
     <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.KyTypez">
             <id property="tid" column="tid" jdbcType="INTEGER"/>
             <result property="tname" column="tname" jdbcType="VARCHAR"/>
-            <result property="tcid" column="tcid" jdbcType="VARCHAR"/>
+            <result property="tcid" column="tcid" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         tid,tname,tcid
     </sql>
+
+    <!--查询所有的类型-->
+    <select id="seTypeAll" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from ky_typez
+        where tcid=#{tcid}
+    </select>
+
+    <!--查询某一个类型-->
+    <select id="seByTid" resultType="com.wupai.taiji.model.entity.KyTypez">
+        select <include refid="Base_Column_List"/>
+        from ky_typez
+        where tid=#{tid}
+    </select>
 </mapper>
