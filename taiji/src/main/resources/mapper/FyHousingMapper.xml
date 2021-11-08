@@ -58,5 +58,16 @@
         select * from fy_housing fh left join fy_room fr on fh.house_id = fr.house_id where fh.joint_rent = 0
     </select>
 
+    <!--查询所有房源的地址信息-->
+    <select id="seAllHouses" resultType="com.wupai.taiji.model.entity.FyHousing">
+        select house_id,city
+        from fy_housing
+      </select>
+
+    <!--根据编号查询-->
+    <select id="seByCity" resultType="com.wupai.taiji.model.entity.FyHousing">
+        select house_floor_price,city from fy_housing
+        where city=#{city}
+    </select>
 
 </mapper>

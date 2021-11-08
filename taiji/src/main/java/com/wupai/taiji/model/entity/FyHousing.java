@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -25,7 +27,8 @@ public class FyHousing {
   private long orientationId;
   private String houseMeters;
   private long fitmentId;
-  private java.sql.Timestamp houserRentDate;
+  @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+  private Timestamp houserRentDate;
   private double rentalPrices;
   private double houseFloorPrice;
   private String housePaymentMethod;

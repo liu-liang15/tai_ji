@@ -26,6 +26,22 @@ public class FyHousingServiceImpl extends ServiceImpl<FyHousingMapper, FyHousing
      * 查询所有房源
      * @return
      */
+    public List<FyHousing> seAllHouses(){
+        return fyHousingMapper.seAllHouses();
+    }
+
+
+    /**
+     * 根据名字查询
+     * @return
+     */
+    public  FyHousing seByCity(String city){
+        return fyHousingMapper.seByCity(city);
+    }
+    /**
+     * 查询所有房源
+     * @return
+     */
     @Override
     public List<FyHousing> getFyHousingList() {
         QueryWrapper<FyHousing> query = new QueryWrapper<>();

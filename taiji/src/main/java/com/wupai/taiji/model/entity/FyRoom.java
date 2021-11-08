@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Timestamp;
 
 @Data
 @TableName(value = "fg_room")
@@ -20,8 +23,10 @@ public class FyRoom {
   private double roomPrices;
   private double roomFloorPrice;
   private String roomPaymentMethod;
-  private java.sql.Timestamp rentTime;
-  private java.sql.Timestamp contractTime;
+  @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+  private Timestamp rentTime;
+  @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+  private Timestamp contractTime;
   private long featureId;
 
 

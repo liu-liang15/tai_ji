@@ -33,7 +33,7 @@ public class KySurepreController {
     return cwAccountService.seCountMes();
 }
 
-@PostMapping("/byhname")
+    @PostMapping("/byhname")
     public FyHousing seByCity(@RequestParam String city){
     return  fyHousingService.seByCity(city);
 }

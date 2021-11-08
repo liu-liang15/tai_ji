@@ -7,7 +7,18 @@ import com.wupai.taiji.model.entity.FyHousing;
 import java.util.List;
 
 public interface FyHousingService extends IService<FyHousing> {
+    /**
+     * 查询所有房源
+     * @return
+     */
+    public List<FyHousing> seAllHouses();
 
+
+    /**
+     * 根据名字查询
+     * @return
+     */
+    public  FyHousing seByCity(String city);
     /**
      * 查询所有房源
      * @return
