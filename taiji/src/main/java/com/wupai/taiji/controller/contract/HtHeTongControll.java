@@ -3,7 +3,7 @@ package com.wupai.taiji.controller.contract;
 import com.wupai.taiji.model.entity.HtHeTong;
 import com.wupai.taiji.model.service.HtHeTongService;
 import com.wupai.taiji.util.CommonResult;
-import org.apache.ibatis.annotations.Param;
+import com.wupai.taiji.vo.HeTongVo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -31,6 +31,11 @@ public class HtHeTongControll {
         return new CommonResult(200,"查询成功！",heTong1);
     }
 
+    /**
+     * 新增合同
+     * @param heTong
+     * @return
+     */
     @PostMapping("xzHeTong")
     public CommonResult xzht(@RequestBody HtHeTong heTong){
 
@@ -40,7 +45,13 @@ public class HtHeTongControll {
         return commonResult;
     }
 
-
+    /**
+     *查询合同详情
+     */
+    @GetMapping("htxq/{htId}")
+    public CommonResult<HeTongVo> htxq(@PathVariable("htId") String htId){
+        return new CommonResult<>(200,"查询成功！",heTongService.selectOneHt(htId));
+    }
 
 
 }

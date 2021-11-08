@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -25,7 +28,7 @@ public class CwFinance implements Serializable {
      * 入住编号（外键）
      */
     private HtRuZhur htRuZhur;
-    private String rzId;
+    private Integer rzId;
 
     /**
      * 费用类型
@@ -41,12 +44,14 @@ public class CwFinance implements Serializable {
     /**
      * 费用周期（开始）
      */
-    private Date costCyclestart;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp costCyclestart;
 
     /**
      * 费用周期（结束）
      */
-    private Date costCycleend;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp costCycleend;
 
     /**
      * 金额
@@ -56,6 +61,7 @@ public class CwFinance implements Serializable {
     /**
      * 收支时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date budgetsTime;
 
     /**

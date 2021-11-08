@@ -26,4 +26,20 @@ public class HtRuZhurService {
         return htRuZhurMapper.selectList(null);
     }
 
+    /**
+     * 修改电话号码
+     * @return
+     */
+    public int updateDh(HtRuZhur htRuZhur) {
+        return htRuZhurMapper.updateById(htRuZhur);
+    }
+
+    /**
+     * 删除同住人
+     * @param tzId
+     * @return
+     */
+    public int deleteRz(String tzId) {
+            return htRuZhurMapper.deleteById(tzId);
+    }
 }

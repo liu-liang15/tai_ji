@@ -6,7 +6,7 @@
 
     <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.CwFinance">
             <id property="financeId" column="finance_id" jdbcType="INTEGER"/>
-            <result property="rzId" column="ru_id" jdbcType="VARCHAR"/>
+            <result property="rzId" column="ru_id" jdbcType="INTEGER"/>
             <result property="costtypeId" column="costtype_id" jdbcType="VARCHAR"/>
             <result property="costDescription" column="cost_description" jdbcType="VARCHAR"/>
             <result property="costCyclestart" column="cost_cyclestart" jdbcType="TIMESTAMP"/>
@@ -90,10 +90,17 @@
     <update id="updateCwFinancestate1" parameterType="com.wupai.taiji.model.entity.CwFinance">
         update cw_finance
         <if test="state == 0">
+<<<<<<< HEAD
             set state = 2,budgetsTime = #{budgets_time,jdbcType=TIMESTAMP}
         </if>
         <if test="state == 1">
             set state = 2,budgetsTime = #{budgets_time,jdbcType=TIMESTAMP}
+=======
+            set state = 2,budgets_time = #{budgetsTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="state == 1">
+            set state = 2,budgets_time = #{budgetsTime,jdbcType=TIMESTAMP}
+>>>>>>> dbf136ad78633f9354b1898b97938944d0e600e9
         </if>
         <if test="state == 3">
             set state = 2

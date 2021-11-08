@@ -38,8 +38,11 @@ public class CwFinanceService {
 
     //新增财务收支
     public CwFinance addCwFinance(CwFinance cwFinance) {
+<<<<<<< HEAD
         cwFinance.setBudgetsTime(new Date());
         cwFinance.setRzId("20001");
+=======
+>>>>>>> dbf136ad78633f9354b1898b97938944d0e600e9
         cwFinanceMapper.addCwFinance(cwFinance);
         return cwFinance;
     }

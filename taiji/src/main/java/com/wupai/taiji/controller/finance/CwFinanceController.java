@@ -2,7 +2,9 @@ package com.wupai.taiji.controller.finance;
 
 import com.github.pagehelper.PageInfo;
 import com.wupai.taiji.model.entity.CwFinance;
+import com.wupai.taiji.model.entity.HtRuZhur;
 import com.wupai.taiji.model.service.CwFinanceService;
+import com.wupai.taiji.model.service.HtRuZhurService;
 import com.wupai.taiji.util.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,15 @@ import java.util.List;
 public class CwFinanceController {
     @Resource
     private CwFinanceService cwFinanceService;
+
+    @Resource
+    private HtRuZhurService htRuZhurService;
+
+    //显示所有入住人
+    @GetMapping("/selectAllRzr")
+    public List<HtRuZhur> selectAllRzr(){
+        return htRuZhurService.getrzr();
+    }
 
     //分页显示所有财务收支
     @GetMapping("/selectAllCwFinance")

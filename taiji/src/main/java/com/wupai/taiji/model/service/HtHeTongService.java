@@ -1,11 +1,15 @@
 package com.wupai.taiji.model.service;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.wupai.taiji.model.entity.FyHousing;
 import com.wupai.taiji.model.entity.HtHeTong;
 import com.wupai.taiji.model.entity.HtRuZhur;
+import com.wupai.taiji.model.mapper.FyHousingMapper;
 import com.wupai.taiji.model.mapper.HtHeTongMapper;
 import com.wupai.taiji.model.mapper.HtRuZhurMapper;
 import com.wupai.taiji.util.CommonResult;
+import com.wupai.taiji.vo.HeTongVo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +31,9 @@ public class HtHeTongService {
 
     @Resource
     HtRuZhurMapper htRuZhurMapper;
+
+    @Resource
+    FyHousingMapper fyHousingMapper;
 
     /**
      * 查询合同表格的接口
@@ -61,5 +68,25 @@ public class HtHeTongService {
 
         System.err.println(heTong);
         return 1;
+    }
+    /**
+     *查询合同详情
+     */
+    public HeTongVo selectOneHt(String htId) {
+        HeTongVo heTongVo=new HeTongVo();
+
+        HtHeTong heTong = heTongMapper.selectOne(new QueryWrapper<HtHeTong>().eq("ht_id", htId));
+        heTongVo.setHeTong(heTong);
+
+        HtRuZhur htRuZhur = htRuZhurMapper.selectById(heTong.getCzr());
+        heTongVo.setCzrPojo(htRuZhur);
+
+        List<HtRuZhur> czrs = htRuZhurMapper.selectList(new QueryWrapper<HtRuZhur>().eq("fj_id", htRuZhur.getRzId()));
+        heTongVo.setCzrs(czrs);
+
+        FyHousing fyHousing = fyHousingMapper.selectById(heTong.getFwId());
+        heTongVo.setFyHousing(fyHousing);
+
+        return heTongVo;
     }
 }
