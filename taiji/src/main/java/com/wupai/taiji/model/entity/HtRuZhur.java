@@ -35,6 +35,8 @@ public class HtRuZhur implements Serializable {
      */
     private String sfz;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+    /**
+     * 跟谁进来的
+     */
+   private String fjId;
 }

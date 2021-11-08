@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -39,7 +42,8 @@ public class HtHuiFang implements Serializable {
     /**
      * 回访时间
      */
-    private Date hfSj;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Timestamp hfSj;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
