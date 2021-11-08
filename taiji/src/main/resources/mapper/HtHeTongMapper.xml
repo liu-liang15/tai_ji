@@ -21,7 +21,7 @@
                 <result property="ygName" column="yg_name" jdbcType="VARCHAR"/>
             </association>
 
-            <association property="czr" javaType="com.wupai.taiji.model.entity.HtRuZhur">
+            <association property="czrPojo" javaType="com.wupai.taiji.model.entity.HtRuZhur">
                 <id property="rzId" column="rz_id" jdbcType="INTEGER"/>
                 <result property="name" column="name" jdbcType="VARCHAR"/>
                 <result property="phone" column="phone" jdbcType="VARCHAR"/>
@@ -54,5 +54,34 @@
                 left join fy_housing fy on ht.fw_id = fy.house_id
                 left join ht_ru_zhur rz on ht.czr = rz.rz_id
                 left join ht_yuan_go yg on ht.cjr = yg.yg_id
+
+                <if test="zt == 1 and pramt != ''">
+                    where  name like  concat('%',#{pramt},'%') or city like concat('%',#{pramt},'%')
+                    or ht_id like concat('%',#{pramt},'%') or phone like concat('%',#{pramt},'%')
+                </if>
+                <if test="zt == 2">
+                    <![CDATA[ where now() < htks_sj  ]]>
+                    <if test=" pramt != ''">
+                        and name like  concat('%',#{pramt},'%') or city like concat('%',#{pramt},'%')
+                        or ht_id like concat('%',#{pramt},'%') or phone like concat('%',#{pramt},'%')
+                    </if>
+                </if>
+
+        <if test="zt == 3">
+            <![CDATA[ where now() > htks_sj and now() < htdq_sj]]>
+            <if test=" pramt != ''">
+                and name like  concat('%',#{pramt},'%') or city like concat('%',#{pramt},'%')
+                or ht_id like concat('%',#{pramt},'%') or phone like concat('%',#{pramt},'%')
+            </if>
+        </if>
+
+        <if test="zt == 4">
+            <![CDATA[ where now() > htdq_sj  ]]>
+            <if test=" pramt != ''">
+                and name like  concat('%',#{pramt},'%') or city like concat('%',#{pramt},'%')
+                or ht_id like concat('%',#{pramt},'%') or phone like concat('%',#{pramt},'%')
+            </if>
+        </if>
+        order by qysj desc
     </select>
 </mapper>

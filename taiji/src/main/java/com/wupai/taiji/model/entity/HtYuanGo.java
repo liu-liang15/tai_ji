@@ -18,6 +18,7 @@ public class HtYuanGo implements Serializable {
     /**
      * 客户预定跟进人员
      */
+    @TableField(exist = false)
     private KySurepre kySurepreYg;
     /**
      * 员工ID

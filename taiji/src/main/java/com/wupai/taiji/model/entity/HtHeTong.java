@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -34,11 +35,20 @@ public class HtHeTong implements Serializable {
      * 房源编号
      */
     private String fwId;
-
     /**
-     * 承租人
+     * 承租人Id
      */
-    private HtRuZhur czr;
+    private  String czr;
+    /**
+     * 承租人实体类
+     */
+    @TableField(exist = false)
+    private HtRuZhur czrPojo;
+    /**
+     * 入住人
+     */
+    @TableField(exist = false)
+    private List<HtRuZhur> czrs;
 
     /**
      * 合同开始时间
@@ -73,9 +83,18 @@ public class HtHeTong implements Serializable {
     private String zhuangTai;
 
     /**
+     * 成交人实体类
+     */
+    @TableField(exist = false)
+    private HtYuanGo cjr;
+
+    /**
      * 成交人
      */
-    private HtYuanGo cjr;
+    @TableField("cjr")
+    private String cjr2;
+
+
 
     /**
      * 备用字段
