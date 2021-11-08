@@ -9,7 +9,6 @@
             <result property="bjTime" column="bj_time" jdbcType="VARCHAR"/>
             <result property="bjPhone" column="bj_phone" jdbcType="VARCHAR"/>
             <result property="bjReason" column="bj_reason" jdbcType="VARCHAR"/>
-            <result property="fyId" column="fy_id" jdbcType="VARCHAR"/>
             <result property="ztId" column="zt_id" jdbcType="VARCHAR"/>
             <result property="wxName" column="wx_name" jdbcType="VARCHAR"/>
             <result property="bjLaiyuan" column="bj_laiyuan" jdbcType="VARCHAR"/>

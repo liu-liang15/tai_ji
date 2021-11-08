@@ -90,7 +90,6 @@
     <update id="updateCwFinancestate1" parameterType="com.wupai.taiji.model.entity.CwFinance">
         update cw_finance
         <if test="state == 0">
-<<<<<<< HEAD
             set state = 2,budgetsTime = #{budgets_time,jdbcType=TIMESTAMP}
         </if>
         <if test="state == 1">
