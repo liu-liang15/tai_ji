@@ -49,4 +49,8 @@ public class CwAccountService  {
         cwAccountMapper.delCwAccount(cwAccount);
         return cwAccount;
     }
+    //查询账户基本信息
+    public List<CwAccount>seCountMes(){
+        return cwAccountMapper.seCountMes();
+    }
 }

@@ -16,7 +16,10 @@ import lombok.Data;
 @TableName(value ="ky_typez")
 @Data
 public class KyTypez implements Serializable {
-
+    /**
+     * 租房类型
+     */
+    private List<KyUneed>kyUneeds;
     /**
      * 预定状态
      */
@@ -29,10 +32,7 @@ public class KyTypez implements Serializable {
      * 租房方式
      */
     private List<KyPre >kyPreway;
-    /**
-     * 预约状态
-     */
-    private List<KyPre>  kyPrestatu;
+
     /**
      * 子编号
      */
@@ -47,7 +47,7 @@ public class KyTypez implements Serializable {
     /**
      * 父级编号
      */
-    private String tcid;
+    private Integer tcid;
 
 
     public Integer getTid() {

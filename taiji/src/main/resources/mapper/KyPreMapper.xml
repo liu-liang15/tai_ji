@@ -4,16 +4,39 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wupai.taiji.model.mapper.KyPreMapper">
 
-    <resultMap id="BaseResultMap" type="com.wupai.taiji.model.entity.KyPre">
-            <id property="pid" column="pid" jdbcType="INTEGER"/>
-            <result property="pCid" column="p_cid" jdbcType="INTEGER"/>
-            <result property="pHid" column="p_hid" jdbcType="INTEGER"/>
-            <result property="pTid" column="p_tid" jdbcType="INTEGER"/>
-            <result property="pStatuTid" column="p_statu_tid" jdbcType="INTEGER"/>
+    <!---->
+    <resultMap id="premes" type="com.wupai.taiji.model.entity.KyPre">
+        <id column="pid" property="pid"></id>
+        <result column="p_time" property="ptime"></result>
+        <association property="typeStatu"
+                     javaType="com.wupai.taiji.model.entity.KyTypez"
+        select="com.wupai.taiji.model.mapper.KyTypezMapper.seByTid"
+        column="p_statu_tis">
+        </association>
     </resultMap>
+
+
+
 
     <sql id="Base_Column_List">
         pid,p_cid,p_hid,
-        p_tid,p_statu_tid
+        p_statu_tid,p_time
     </sql>
+
+
+    <!--新增预约-->
+    <insert id="addPre">
+        insert into ky_pre (pid,p_cid,p_hid,p_statu_tid,p_time) values (null,#{pcid},#{phid},#{pstatid},#{ptime})
+    </insert>
+    
+    <!--根据编号查询预约表-->
+    <select id="seByCid" resultMap="premes">
+        select <include refid="Base_Column_List"/>
+        from ky_pre
+        where p_cid =#{cid}
+    </select>
+
+
+
+
 </mapper>
