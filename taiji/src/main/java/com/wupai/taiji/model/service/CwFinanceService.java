@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 
@@ -36,12 +37,16 @@ public class CwFinanceService {
     }
 
     //新增财务收支
-    public int addCwFinance(@RequestParam("cwfinances") List<CwFinance> cwfinances) {
-        return cwFinanceMapper.addCwFinance(cwfinances);
+    public CwFinance addCwFinance(CwFinance cwFinance) {
+        cwFinance.setBudgetsTime(new Date());
+        cwFinance.setRzId("20001");
+        cwFinanceMapper.addCwFinance(cwFinance);
+        return cwFinance;
     }
 
     //修改财务收支状态
     public CwFinance updateCwFinancestate1(CwFinance cwFinance) {
+        cwFinance.setBudgetsTime(new Date());
         cwFinanceMapper.updateCwFinancestate1(cwFinance);
         return cwFinance;
     }

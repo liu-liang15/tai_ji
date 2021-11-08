@@ -81,22 +81,19 @@
     insert into cw_finance (rz_id, costtype_id,
       cost_description, cost_cyclestart, cost_cycleend,
       money, budgets_time)
-    values
-    <foreach collection="cwfinances" item="cwfinance" separator=",">
-      (#{cwfinance.rzId}, #{cwfinance.costtypeId},
-      #{cwfinance.costDescription}, #{cwfinance.costCyclestart}, #{cwfinance.costCycleend},
-      #{cwfinance.money}, #{cwfinance.budgetsTime})
-    </foreach>
+    values (#{rzId,jdbcType=INTEGER}, #{costtypeId,jdbcType=INTEGER}, #{costDescription,jdbcType=VARCHAR},
+      #{costCyclestart,jdbcType=TIMESTAMP}, #{costCycleend,jdbcType=TIMESTAMP}, #{money,jdbcType=DECIMAL},
+      #{budgetsTime,jdbcType=TIMESTAMP})
   </insert>
 
     <!-- 修改财务收支状态 -->
     <update id="updateCwFinancestate1" parameterType="com.wupai.taiji.model.entity.CwFinance">
         update cw_finance
         <if test="state == 0">
-            set state = 2,stock = #{stock,jdbcType=INTEGER}
+            set state = 2,budgetsTime = #{budgets_time,jdbcType=TIMESTAMP}
         </if>
         <if test="state == 1">
-            set state = 2
+            set state = 2,budgetsTime = #{budgets_time,jdbcType=TIMESTAMP}
         </if>
         <if test="state == 3">
             set state = 2
