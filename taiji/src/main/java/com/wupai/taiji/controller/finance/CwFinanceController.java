@@ -35,9 +35,12 @@ public class CwFinanceController {
 
     //新增财务收支
     @PostMapping("/addCwFinance")
-    public int addCwFinance(@RequestParam("cwfinances") List<CwFinance> cwfinances){
-        cwFinanceService.addCwFinance(cwfinances);
-        return 1;
+    public CommonResult addCwFinance(@RequestBody CwFinance cwFinance){
+        CwFinance cw = cwFinanceService.addCwFinance(cwFinance);
+        if (cw==null)
+            return new CommonResult(200,"账号或密码错误！");
+        else
+            return new CommonResult(200,"查询成功",cw);
     }
 
     //修改财务收支状态
