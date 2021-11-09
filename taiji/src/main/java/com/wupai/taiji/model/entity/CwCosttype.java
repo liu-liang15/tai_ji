@@ -6,6 +6,7 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 费用类型表 
@@ -13,6 +14,7 @@ import lombok.Data;
  */
 @TableName(value ="cw_costtype")
 @Data
+@Accessors(chain = true)
 public class CwCosttype implements Serializable {
     /**
      * 费用类型编号

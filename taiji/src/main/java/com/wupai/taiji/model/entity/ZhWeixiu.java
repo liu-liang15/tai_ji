@@ -84,6 +84,7 @@ public class ZhWeixiu implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Timestamp pdDate;
     private String wxCity;
+    private String ztIds;
 
 
     @TableField(exist = false)

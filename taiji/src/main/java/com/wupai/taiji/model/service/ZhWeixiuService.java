@@ -47,7 +47,8 @@ public class ZhWeixiuService  {
     //修改维修数据
 
     public Integer update(ZhWeixiu zhWeixiu){
-        Integer count =zhWeixiuMapper.update(zhWeixiu);
+        zhWeixiu.setZtIds("2");
+        Integer count=zhWeixiuMapper.update(zhWeixiu);
         return  count;
     }
     //修改维修状态

@@ -55,16 +55,16 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        wx_id,wx_time,wx_phone,
-        wx_reason,fw_id,zt_id,
-        jj_id,lx_id,px_lx,
-        wx_name,wx_laiyuan
+       wx_id, wx_time, wx_phone, wx_reason,
+       fw_id, jj_id, lx_id, px_lx, wx_name, wx_laiyuan,
+       pd_name, pd_qian, pd_beizhu, pd_date,
+       wx_city, zt_ids, wxjjid, wxjjname
     </sql>
 
 
 
     <select id="findBypage" resultMap="ZhWeixiuVo">
-     SELECT * FROM zh_weixiu
+     SELECT <include refid="Base_Column_List"></include> from zh_weixiu
  LEFT JOIN zh_jj j ON j.`wxjjid`=zh_weixiu.`jj_id`
     </select>
 
@@ -99,6 +99,9 @@
             <if test="pdDate != null">
                 pd_date = #{pdDate},
             </if>
+            <if test = "ztIds != 0">
+                zt_ids = #{ztIds}
+             </if>
         </set>
         where wx_id = #{wxId}
     </update>
@@ -106,9 +109,7 @@
     <update id="updatezt">
         update tai_ji.zh_weixiu
         <set>
-            <if test="ztId ==  ">
-                zt_id =
-            </if>
+                zt_ids = #{ztIds}
         </set>
         where wx_id = #{wxId}
     </update>
@@ -118,65 +119,6 @@
         delete from tai_ji.zh_weixiu where wx_id = #{wxId}
     </delete>
 
-
-
-    <!--查询单个-->
-<!--    <select id="queryById" resultMap="ZhWeixiuMap">-->
-<!--        select-->
-<!--          wx_id, wx_time, wx_phone, wx_reason, fw_id, zt_id, jj_id, lx_id, px_lx, wx_name, wx_laiyuan-->
-<!--        from tai_ji.zh_weixiu-->
-<!--        where wx_id = #{wxId}-->
-<!--    </select>-->
-
-<!--    &lt;!&ndash;查询指定行数据&ndash;&gt;-->
-<!--    <select id="queryAllByLimit" resultMap="ZhWeixiuMap">-->
-<!--        select-->
-<!--          wx_id, wx_time, wx_phone, wx_reason, fw_id, zt_id, jj_id, lx_id, px_lx, wx_name, wx_laiyuan-->
-<!--        from tai_ji.zh_weixiu-->
-<!--        limit #{offset}, #{limit}-->
-<!--    </select>-->
-
-<!--    &lt;!&ndash;通过实体作为筛选条件查询&ndash;&gt;-->
-<!--    <select id="queryAll" resultMap="ZhWeixiuMap">-->
-<!--        select-->
-<!--        wx_id, wx_time, wx_phone, wx_reason, fw_id, zt_id, jj_id, lx_id, px_lx, wx_name, wx_laiyuan-->
-<!--        from tai_ji.zh_weixiu-->
-<!--        <where>-->
-<!--            <if test="wxId != null">-->
-<!--                and wx_id = #{wxId}-->
-<!--            </if>-->
-<!--            <if test="wxTime != null">-->
-<!--                and wx_time = #{wxTime}-->
-<!--            </if>-->
-<!--            <if test="wxPhone != null and wxPhone != ''">-->
-<!--                and wx_phone = #{wxPhone}-->
-<!--            </if>-->
-<!--            <if test="wxReason != null and wxReason != ''">-->
-<!--                and wx_reason = #{wxReason}-->
-<!--            </if>-->
-<!--            <if test="fwId != null">-->
-<!--                and fw_id = #{fwId}-->
-<!--            </if>-->
-<!--            <if test="ztId != null">-->
-<!--                and zt_id = #{ztId}-->
-<!--            </if>-->
-<!--            <if test="jjId != null">-->
-<!--                and jj_id = #{jjId}-->
-<!--            </if>-->
-<!--            <if test="lxId != null">-->
-<!--                and lx_id = #{lxId}-->
-<!--            </if>-->
-<!--            <if test="pxLx != null">-->
-<!--                and px_lx = #{pxLx}-->
-<!--            </if>-->
-<!--            <if test="wxName != null and wxName != ''">-->
-<!--                and wx_name = #{wxName}-->
-<!--            </if>-->
-<!--            <if test="wxLaiyuan != null and wxLaiyuan != ''">-->
-<!--                and wx_laiyuan = #{wxLaiyuan}-->
-<!--            </if>-->
-<!--        </where>-->
-<!--    </select>-->
 
 
 

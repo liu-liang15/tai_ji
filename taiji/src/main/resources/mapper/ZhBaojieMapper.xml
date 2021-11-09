@@ -16,12 +16,10 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        bj_id,bj_time,bj_phone,
-        bj_reason,fy_id,zt_id,
-        wx_name,bj_laiyuan,pd_id
+        bj_id, bj_time, bj_phone, bj_reason, fy_city, zt_id, wx_name, bj_laiyuan, pd_id
     </sql>
     <select id="findBypage" resultMap="BaseResultMap">
-        select * from zh_baojie
+        select <include refid="Base_Column_List"></include> from zh_baojie
     </select>
 
 </mapper>

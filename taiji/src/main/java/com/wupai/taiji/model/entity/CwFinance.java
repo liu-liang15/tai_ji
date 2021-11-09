@@ -11,6 +11,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 
@@ -18,6 +19,7 @@ import lombok.Data;
  */
 @TableName(value ="cw_finance")
 @Data
+@Accessors(chain = true)
 public class CwFinance implements Serializable {
     /**
      * 财务信息编号
