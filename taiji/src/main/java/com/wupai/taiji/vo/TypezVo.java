@@ -5,6 +5,9 @@ package com.wupai.taiji.vo;
  * @date 2021年 11月07日11:08
  */
 public class TypezVo {
+    /**
+     * 类别编号
+     */
     private Integer tid;
 
     /**

@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 /**
  * @author 杨思
  * @date 2021年 11月08日3:07
- *
+ *  预约vo
   */
 public class PreVo {
     private Integer pid;
@@ -15,7 +15,7 @@ public class PreVo {
     private Integer phid;//房源地址
     private Integer pstatid;
     @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
-    private Timestamp ptime;
+    private Timestamp ptime;//约看时间
     private Integer pageNo;
     private Integer pageSize;
     private String pname;//姓名
