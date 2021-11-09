@@ -88,4 +88,7 @@ public  List<KyCustominfo> allMes(){
         return new PageInfo<>(list);
     }
 
+
+
+
 }

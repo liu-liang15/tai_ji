@@ -56,6 +56,8 @@ public interface KyCustominfoMapper extends BaseMapper<KyCustominfo> {
      * @return
      */
     List<KyCustominfo>seMoreLike(CustomInfoVo customInfoVo);
+
+
 }
 
 
